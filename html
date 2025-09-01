@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akasa Air</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo h1 {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: inline-block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
+            background: #3c8dbc;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        section {
+            padding: 2rem;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        section:hover {
+            background-color: #f0f0f0;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-top: 10px;
+        }
+ 
+        form input, form button {
+            padding: 10px;
+            margin-top: 5px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+        }
+
+        form button {
+            background: #3c8dbc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #2b6c8b;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-link {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Akasa Air</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#fleet">Fleet</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#apply">Apply</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="section-content">
+            <h2>Welcome to Akasa Air</h2>
+            <p>Experience seamless travel with us!</p>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet">
+        <div class="section-content">
+            <h2>Our Fleet</h2>
+            <p>Akasa Air boasts a state-of-the-art fleet, providing comfort, reliability, and safety to our passengers.</p>
+            <p>We operate a variety of aircraft, ensuring flexibility and efficiency for all your travel needs.</p>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff">
+        <div class="section-content">
+            <h2>Meet Our Staff</h2>
+            <p>Our dedicated staff ensure every flight is a safe and enjoyable experience for our passengers.</p>
+            <p>From pilots to cabin crew, we are committed to providing the best service in the sky!</p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="section-content">
+            <h2>About Us</h2>
+            <p>Akasa Air is committed to providing passengers with an exceptional travel experience. Our vision is to redefine air travel through innovative services and sustainable operations.</p>
+            <p>We aim to connect people across India with convenience, comfort, and efficiency while maintaining the highest safety standards.</p>
+        </div>
+    </section>
+
+    <!-- Apply Section -->
+    <section id="apply">
+        <div class="section-content">
+            <h2>Apply to Akasa Air</h2>
+            <p>If you're passionate about aviation and customer service, we'd love to have you on board! Please fill out the form below to start your application.</p>
+
+            <form action="#" method="POST">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="position">Position Applied For:</label>
+                <input type="text" id="position" name="position" required>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Akasa Air. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
