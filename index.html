@@ -11,9 +11,10 @@
             theme: {
                 extend: {
                     colors: {
-                        akasaBlue: '#0c4da2',
-                        akasaGold: '#ffb81c',
-                        akasaLight: '#e6f0fa',
+                        akasaOrange: '#FF5C00',
+                        akasaDark: '#333333',
+                        akasaLight: '#FFF5EB',
+                        akasaAccent: '#FF8C42',
                     }
                 }
             }
@@ -37,15 +38,30 @@
         .aircraft-card:hover {
             transform: translateY(-5px);
         }
+        .nav-link.active {
+            border-bottom: 3px solid #FF8C42;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF5C00 0%, #FF8C42 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #FF5C00, #FF8C42);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #E55100, #E57A35);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 92, 0, 0.3);
+        }
     </style>
 </head>
 <body class="bg-akasaLight font-sans">
     <!-- Header -->
-    <header class="bg-akasaBlue text-white shadow-lg">
+    <header class="gradient-bg text-white shadow-lg">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-akasaGold text-4xl mr-2">
+                    <div class="text-white text-4xl mr-2">
                         <i class="fas fa-plane-departure"></i>
                     </div>
                     <h1 class="text-2xl font-bold">Akasa Air Virtual</h1>
@@ -53,11 +69,11 @@
                 
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8">
-                        <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                        <li><a href="#" class="nav-link" data-page="fleet">Fleet</a></li>
-                        <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
-                        <li><a href="#" class="nav-link" data-page="staff">Staff</a></li>
-                        <li><a href="#" class="nav-link" data-page="apply">Apply</a></li>
+                        <li><a href="#" class="nav-link active font-semibold py-2" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link font-semibold py-2" data-page="fleet">Fleet</a></li>
+                        <li><a href="#" class="nav-link font-semibold py-2" data-page="about">About Us</a></li>
+                        <li><a href="#" class="nav-link font-semibold py-2" data-page="staff">Staff</a></li>
+                        <li><a href="#" class="nav-link font-semibold py-2" data-page="apply">Apply</a></li>
                     </ul>
                 </nav>
                 
@@ -69,13 +85,13 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu hidden bg-akasaBlue text-white py-4 shadow-lg">
+    <div class="mobile-menu hidden gradient-bg text-white py-4 shadow-lg">
         <ul class="flex flex-col items-center space-y-4">
-            <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-            <li><a href="#" class="nav-link" data-page="fleet">Fleet</a></li>
-            <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
-            <li><a href="#" class="nav-link" data-page="staff">Staff</a></li>
-            <li><a href="#" class="nav-link" data-page="apply">Apply</a></li>
+            <li><a href="#" class="nav-link active font-semibold" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-link font-semibold" data-page="fleet">Fleet</a></li>
+            <li><a href="#" class="nav-link font-semibold" data-page="about">About Us</a></li>
+            <li><a href="#" class="nav-link font-semibold" data-page="staff">Staff</a></li>
+            <li><a href="#" class="nav-link font-semibold" data-page="apply">Apply</a></li>
         </ul>
     </div>
 
@@ -84,7 +100,7 @@
         <!-- Home Page -->
         <section id="home" class="page-section active">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-                <div class="h-64 bg-blue-900 bg-opacity-80 flex items-center justify-center">
+                <div class="h-64 gradient-bg flex items-center justify-center">
                     <div class="text-center text-white px-4">
                         <h2 class="text-4xl font-bold mb-4">Welcome to Akasa Air Virtual</h2>
                         <p class="text-xl">Experience the thrill of virtual aviation with India's newest airline</p>
@@ -93,24 +109,24 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-4xl text-akasaBlue mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
+                    <div class="text-4xl text-akasaOrange mb-4">
                         <i class="fas fa-plane"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Modern Fleet</h3>
                     <p class="text-gray-600">Fly the latest generation aircraft with detailed simulations.</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-4xl text-akasaBlue mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
+                    <div class="text-4xl text-akasaOrange mb-4">
                         <i class="fas fa-globe-asia"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Global Network</h3>
                     <p class="text-gray-600">Connect to destinations across India and around the world.</p>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-                    <div class="text-4xl text-akasaBlue mb-4">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
+                    <div class="text-4xl text-akasaOrange mb-4">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Community</h3>
@@ -119,14 +135,14 @@
             </div>
 
             <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-akasaBlue">Latest News</h2>
+                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Latest News</h2>
                 <div class="space-y-6">
-                    <div class="border-l-4 border-akasaGold pl-4 py-2">
+                    <div class="border-l-4 border-akasaOrange pl-4 py-2">
                         <h3 class="text-xl font-semibold">New Routes Added</h3>
                         <p class="text-gray-600">We've added new routes to Southeast Asia. Check the schedule for details.</p>
                         <p class="text-sm text-gray-500">Posted on: June 15, 2023</p>
                     </div>
-                    <div class="border-l-4 border-akasaGold pl-4 py-2">
+                    <div class="border-l-4 border-akasaOrange pl-4 py-2">
                         <h3 class="text-xl font-semibold">737 MAX Now Available</h3>
                         <p class="text-gray-600">Our fleet now includes the Boeing 737 MAX 8 aircraft.</p>
                         <p class="text-sm text-gray-500">Posted on: May 28, 2023</p>
@@ -135,189 +151,387 @@
             </div>
         </section>
 
-        <!-- Fleet Page -->
-        <section id="fleet" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaBlue text-center">Our Fleet</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <div class="aircraft-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-plane text-6xl text-akasaBlue"></i>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akasa Air Virtual - 737 MAX 8 Fleet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        akasaOrange: '#FF5C00',
+                        akasaDark: '#333333',
+                        akasaLight: '#FFF5EB',
+                        akasaAccent: '#FF8C42',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .aircraft-card {
+            transition: transform 0.3s ease;
+        }
+        .aircraft-card:hover {
+            transform: translateY(-5px);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF5C00 0%, #FF8C42 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #FF5C00, #FF8C42);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #E55100, #E57A35);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 92, 0, 0.3);
+        }
+        .spec-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-akasaLight font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-white text-4xl mr-2">
+                        <i class="fas fa-plane-departure"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Boeing 737 MAX 8</h3>
-                        <p class="text-gray-600 mb-4">Our workhorse for medium-haul routes with exceptional fuel efficiency.</p>
-                        <ul class="text-sm text-gray-500 space-y-1">
-                            <li><span class="font-semibold">Range:</span> 3,550 NM</li>
-                            <li><span class="font-semibold">Capacity:</span> 189 passengers</li>
-                            <li><span class="font-semibold">Cruise Speed:</span> Mach 0.79</li>
-                        </ul>
-                    </div>
+                    <h1 class="text-2xl font-bold">Akasa Air Virtual</h1>
                 </div>
                 
-                <div class="aircraft-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-plane text-6xl text-akasaBlue"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Boeing 737-800</h3>
-                        <p class="text-gray-600 mb-4">Reliable aircraft for our domestic and regional network.</p>
-                        <ul class="text-sm text-gray-500 space-y-1">
-                            <li><span class="font-semibold">Range:</span> 2,935 NM</li>
-                            <li><span class="font-semibold">Capacity:</span> 186 passengers</li>
-                            <li><span class="font-semibold">Cruise Speed:</span> Mach 0.785</li>
-                        </ul>
-                    </div>
-                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="font-semibold py-2">Home</a></li>
+                        <li><a href="#" class="font-semibold py-2 border-b-2 border-white">Fleet</a></li>
+                        <li><a href="#" class="font-semibold py-2">About Us</a></li>
+                        <li><a href="#" class="font-semibold py-2">Staff</a></li>
+                        <li><a href="#" class="font-semibold py-2">Apply</a></li>
+                    </ul>
+                </nav>
                 
-                <div class="aircraft-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-plane text-6xl text-akasaBlue"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Airbus A321neo</h3>
-                        <p class="text-gray-600 mb-4">Latest addition for high-density routes with premium comfort.</p>
-                        <ul class="text-sm text-gray-500 space-y-1">
-                            <li><span class="font-semibold">Range:</span> 3,200 NM</li>
-                            <li><span class="font-semibold">Capacity:</span> 212 passengers</li>
-                            <li><span class="font-semibold">Cruise Speed:</span> Mach 0.78</li>
-                        </ul>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Fleet - Boeing 737 MAX 8</h2>
+        
+        <div class="flex flex-col lg:flex-row gap-8 mb-12">
+            <!-- Aircraft Image -->
+            <div class="lg:w-1/2">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-80 bg-orange-100 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1588615323810-5df10e2a1c2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Boeing 737 MAX 8" class="object-contain h-full w-full">
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-akasaBlue">Fleet Statistics</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Aircraft Distribution</h3>
-                        <div class="space-y-4">
+            <!-- Aircraft Details -->
+            <div class="lg:w-1/2">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Boeing 737 MAX 8</h3>
+                    <p class="text-gray-600 mb-6">The Boeing 737 MAX 8 is our flagship aircraft, offering exceptional fuel efficiency, reduced emissions, and a superior passenger experience. It's the backbone of our fleet, serving both domestic and international routes.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="text-akasaOrange text-2xl mb-2">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="font-semibold">Capacity</h4>
+                            <p class="text-gray-600">189 passengers</p>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="text-akasaOrange text-2xl mb-2">
+                                <i class="fas fa-road"></i>
+                            </div>
+                            <h4 class="font-semibold">Range</h4>
+                            <p class="text-gray-600">3,550 NM</p>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="text-akasaOrange text-2xl mb-2">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="font-semibold">Cruise Speed</h4>
+                            <p class="text-gray-600">Mach 0.79</p>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="text-akasaOrange text-2xl mb-2">
+                                <i class="fas fa-gas-pump"></i>
+                            </div>
+                            <h4 class="font-semibold">Fuel Efficiency</h4>
+                            <p class="text-gray-600">14% better than NG</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                            View Technical Specifications
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div class="bg-white p-8 rounded-lg shadow-lg mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Technical Specifications</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Dimensions</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Length</span>
+                            <span class="font-semibold">39.5 m (129 ft 7 in)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Wingspan</span>
+                            <span class="font-semibold">35.9 m (117 ft 10 in)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Height</span>
+                            <span class="font-semibold">12.3 m (40 ft 4 in)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Cabin Width</span>
+                            <span class="font-semibold">3.53 m (11 ft 7 in)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Performance</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Max Takeoff Weight</span>
+                            <span class="font-semibold">82,191 kg (181,200 lb)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Max Range</span>
+                            <span class="font-semibold">6,570 km (3,550 NM)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Service Ceiling</span>
+                            <span class="font-semibold">41,000 ft (12,500 m)</span>
+                        </li>
+                        <li class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Engines</span>
+                            <span class="font-semibold">CFM International LEAP-1B</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fleet Statistics -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Fleet Statistics</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Current Fleet</h3>
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-5xl font-bold text-akasaOrange">22</div>
+                            <div class="ml-4">
+                                <div class="font-semibold">Boeing 737 MAX 8</div>
+                                <div class="text-sm text-gray-600">in active service</div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mt-6">
                             <div>
                                 <div class="flex justify-between mb-1">
-                                    <span>B737 MAX 8</span>
-                                    <span>45%</span>
+                                    <span class="text-sm">Average fleet age</span>
+                                    <span class="text-sm font-semibold">2.3 years</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-akasaBlue h-2.5 rounded-full" style="width: 45%"></div>
+                                <div class="w-full bg-orange-100 rounded-full h-2.5">
+                                    <div class="bg-akasaOrange h-2.5 rounded-full" style="width: 25%"></div>
                                 </div>
                             </div>
+                            
                             <div>
                                 <div class="flex justify-between mb-1">
-                                    <span>B737-800</span>
-                                    <span>35%</span>
+                                    <span class="text-sm">On-time performance</span>
+                                    <span class="text-sm font-semibold">96.7%</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-akasaBlue h-2.5 rounded-full" style="width: 35%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>A321neo</span>
-                                    <span>20%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-akasaBlue h-2.5 rounded-full" style="width: 20%"></div>
+                                <div class="w-full bg-orange-100 rounded-full h-2.5">
+                                    <div class="bg-akasaOrange h-2.5 rounded-full" style="width: 96.7%"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Fleet Facts</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
-                                <span>Average fleet age: 2.3 years</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
-                                <span>Total aircraft: 22 virtual aircraft</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
-                                <span>All aircraft feature custom liveries</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
-                                <span>Regular fleet updates and expansions</span>
-                            </li>
-                        </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Fleet Facts</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span>All aircraft feature custom Akasa Air liveries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span>Equipped with advanced winglets for improved fuel efficiency</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span>Sky Interior with modern LED lighting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span>Regular software updates and maintenance checks</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-6 text-center">
+                        <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                            Download Fleet Brochure
+                        </button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Akasa Air Virtual</h3>
+                    <p class="text-orange-100">Experience the thrill of virtual aviation with India's newest airline.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-orange-100 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-orange-100 hover:text-white">Fleet</a></li>
+                        <li><a href="#" class="text-orange-100 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-orange-100 hover:text-white">Staff</a></li>
+                        <li><a href="#" class="text-orange-100 hover:text-white">Apply</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-orange-300 mt-8 pt-8 text-center text-orange-100">
+                <p>&copy; 2023 Akasa Air Virtual. All rights reserved.</p>
+                <p class="mt-2">This is a virtual airline for flight simulation purposes only and is not affiliated with any real-world airline.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
 
         <!-- About Us Page -->
         <section id="about" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaBlue text-center">About Akasa Air Virtual</h2>
+            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">About Akasa Air Virtual</h2>
             
             <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
                 <div class="flex flex-col md:flex-row items-center mb-8">
                     <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
-                        <h3 class="text-2xl font-semibold mb-4 text-akasaBlue">Our Story</h3>
+                        <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Our Story</h3>
                         <p class="text-gray-600 mb-4">Akasa Air Virtual was established in 2022 as a virtual airline community for flight simulation enthusiasts. We strive to recreate the experience of operating a modern airline with professionalism and attention to detail.</p>
                         <p class="text-gray-600">Our community brings together aviation enthusiasts from around the world to share their passion for flight simulation and virtual aviation.</p>
                     </div>
-                    <div class="md:w-1/2 h-64 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-history text-6xl text-akasaBlue"></i>
+                    <div class="md:w-1/2 h-64 bg-orange-100 flex items-center justify-center rounded-lg">
+                        <i class="fas fa-history text-6xl text-akasaOrange"></i>
                     </div>
                 </div>
                 
                 <div class="flex flex-col md:flex-row-reverse items-center">
                     <div class="md:w-1/2 mb-6 md:mb-0 md:pl-8">
-                        <h3 class="text-2xl font-semibold mb-4 text-akasaBlue">Our Mission</h3>
+                        <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Our Mission</h3>
                         <p class="text-gray-600 mb-4">To provide an immersive and realistic virtual airline experience for flight simulation enthusiasts, with professional operations, detailed procedures, and a friendly community atmosphere.</p>
                         <p class="text-gray-600">We aim to continuously expand our virtual network while maintaining the highest standards of virtual aviation.</p>
                     </div>
-                    <div class="md:w-1/2 h-64 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-bullseye text-6xl text-akasaBlue"></i>
+                    <div class="md:w-1/2 h-64 bg-orange-100 flex items-center justify-center rounded-lg">
+                        <i class="fas fa-bullseye text-6xl text-akasaOrange"></i>
                     </div>
                 </div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaBlue">What We Offer</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-akasaOrange">
+                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">What We Offer</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
                             <span>Detailed virtual operations with real-world procedures</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
                             <span>Regular events and group flights</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
                             <span>Pilot ranking and awards system</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
                             <span>Comprehensive documentation and training materials</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
                             <span>Friendly and supportive community</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaBlue">Community Values</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-akasaOrange">
+                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Community Values</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <i class="fas fa-star text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-star text-akasaOrange mt-1 mr-2"></i>
                             <span><strong>Respect:</strong> Treat all members with courtesy and respect</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-star text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-star text-akasaOrange mt-1 mr-2"></i>
                             <span><strong>Professionalism:</strong> Maintain high standards in our virtual operations</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-star text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-star text-akasaOrange mt-1 mr-2"></i>
                             <span><strong>Learning:</strong> Encourage skill development and knowledge sharing</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-star text-akasaGold mt-1 mr-2"></i>
+                            <i class="fas fa-star text-akasaOrange mt-1 mr-2"></i>
                             <span><strong>Fun:</strong> Remember that flight simulation is ultimately about enjoyment</span>
                         </li>
                     </ul>
@@ -327,114 +541,114 @@
 
         <!-- Staff Page -->
         <section id="staff" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaBlue text-center">Our Team</h2>
+            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Team</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Rajesh Kumar</h3>
-                        <p class="text-akasaGold font-medium mb-3">Founder & CEO</p>
+                        <p class="text-akasaOrange font-medium mb-3">Founder & CEO</p>
                         <p class="text-gray-600">Aviation enthusiast with over 10 years of virtual airline experience.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Priya Sharma</h3>
-                        <p class="text-akasaGold font-medium mb-3">Chief Operations Officer</p>
+                        <p class="text-akasaOrange font-medium mb-3">Chief Operations Officer</p>
                         <p class="text-gray-600">Responsible for flight operations and scheduling.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Arjun Patel</h3>
-                        <p class="text-akasaGold font-medium mb-3">Training Manager</p>
+                        <p class="text-akasaOrange font-medium mb-3">Training Manager</p>
                         <p class="text-gray-600">Develops training programs and checkrides for pilots.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Sneha Desai</h3>
-                        <p class="text-akasaGold font-medium mb-3">Route Manager</p>
+                        <p class="text-akasaOrange font-medium mb-3">Route Manager</p>
                         <p class="text-gray-600">Designs and maintains our network of routes.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Vikram Singh</h3>
-                        <p class="text-akasaGold font-medium mb-3">IT Manager</p>
+                        <p class="text-akasaOrange font-medium mb-3">IT Manager</p>
                         <p class="text-gray-600">Maintains our website and tracking systems.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-56 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-user-circle text-6xl text-akasaBlue"></i>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange">
+                    <div class="h-56 bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
                     </div>
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-semibold mb-1">Ananya Reddy</h3>
-                        <p class="text-akasaGold font-medium mb-3">Community Manager</p>
+                        <p class="text-akasaOrange font-medium mb-3">Community Manager</p>
                         <p class="text-gray-600">Engages with our community and organizes events.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-akasaBlue">Join Our Team</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-akasaOrange">
+                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Join Our Team</h2>
                 <p class="text-gray-600 mb-6">We're always looking for enthusiastic and dedicated staff members to help grow our virtual airline. If you're interested in taking on a staff role, please check our available positions and apply.</p>
                 <div class="text-center">
-                    <a href="#" class="nav-link bg-akasaBlue text-white px-6 py-3 rounded-lg font-semibold inline-block hover:bg-blue-800 transition duration-300" data-page="apply">View Open Positions</a>
+                    <a href="#" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold inline-block" data-page="apply">View Open Positions</a>
                 </div>
             </div>
         </section>
 
         <!-- Apply Page -->
         <section id="apply" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaBlue text-center">Join Akasa Air Virtual</h2>
+            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Join Akasa Air Virtual</h2>
             
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <h3 class="text-2xl font-semibold mb-6 text-akasaBlue">Pilot Application</h3>
+            <div class="bg-white p-8 rounded-lg shadow-lg mb-8 border-t-4 border-akasaOrange">
+                <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Pilot Application</h3>
                 
                 <form class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="firstName" class="block text-gray-700 mb-2">First Name</label>
-                            <input type="text" id="firstName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue">
+                            <input type="text" id="firstName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange">
                         </div>
                         
                         <div>
                             <label for="lastName" class="block text-gray-700 mb-2">Last Name</label>
-                            <input type="text" id="lastName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue">
+                            <input type="text" id="lastName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange">
                         </div>
                     </div>
                     
                     <div>
                         <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue">
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange">
                     </div>
                     
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="simulator" class="block text-gray-700 mb-2">Primary Simulator</label>
-                            <select id="simulator" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue">
+                            <select id="simulator" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange">
                                 <option value="">Select Simulator</option>
                                 <option value="msfs">Microsoft Flight Simulator</option>
                                 <option value="xplane">X-Plane</option>
@@ -446,7 +660,7 @@
                         
                         <div>
                             <label for="experience" class="block text-gray-700 mb-2">Flight Sim Experience</label>
-                            <select id="experience" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue">
+                            <select id="experience" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange">
                                 <option value="">Select Experience Level</option>
                                 <option value="beginner">Beginner (0-1 years)</option>
                                 <option value="intermediate">Intermediate (1-3 years)</option>
@@ -458,7 +672,7 @@
                     
                     <div>
                         <label for="whyJoin" class="block text-gray-700 mb-2">Why do you want to join Akasa Air Virtual?</label>
-                        <textarea id="whyJoin" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaBlue"></textarea>
+                        <textarea id="whyJoin" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-akasaOrange"></textarea>
                     </div>
                     
                     <div class="flex items-center">
@@ -467,54 +681,54 @@
                     </div>
                     
                     <div class="text-center">
-                        <button type="submit" class="bg-akasaBlue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition duration-300">Submit Application</button>
+                        <button type="submit" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">Submit Application</button>
                     </div>
                 </form>
             </div>
             
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-semibold mb-6 text-akasaBlue">Requirements</h3>
+            <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-akasaOrange">
+                <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Requirements</h3>
                 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <h4 class="text-xl font-semibold mb-4 text-akasaBlue">Pilot Requirements</h4>
+                        <h4 class="text-xl font-semibold mb-4 text-akasaOrange">Pilot Requirements</h4>
                         <ul class="space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
                                 <span>Minimum age of 13 years</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
                                 <span>Legal copy of a supported flight simulator</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
                                 <span>Basic understanding of English</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
                                 <span>Internet connection for tracking flights</span>
                             </li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h4 class="text-xl font-semibold mb-4 text-akasaBlue">What We Provide</h4>
+                        <h4 class="text-xl font-semibold mb-4 text-akasaOrange">What We Provide</h4>
                         <ul class="space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-gift text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-gift text-akasaOrange mt-1 mr-2"></i>
                                 <span>Detailed pilot training program</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-gift text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-gift text-akasaOrange mt-1 mr-2"></i>
                                 <span>Custom aircraft liveries</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-gift text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-gift text-akasaOrange mt-1 mr-2"></i>
                                 <span>Comprehensive documentation</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-gift text-akasaGold mt-1 mr-2"></i>
+                                <i class="fas fa-gift text-akasaOrange mt-1 mr-2"></i>
                                 <span>Friendly and supportive community</span>
                             </li>
                         </ul>
@@ -525,43 +739,43 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-akasaBlue text-white py-12 mt-12">
+    <footer class="gradient-bg text-white py-12 mt-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Akasa Air Virtual</h3>
-                    <p class="text-akasaLight">Experience the thrill of virtual aviation with India's newest airline.</p>
+                    <p class="text-orange-100">Experience the thrill of virtual aviation with India's newest airline.</p>
                 </div>
                 
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="nav-link text-akasaLight hover:text-akasaGold" data-page="home">Home</a></li>
-                        <li><a href="#" class="nav-link text-akasaLight hover:text-akasaGold" data-page="fleet">Fleet</a></li>
-                        <li><a href="#" class="nav-link text-akasaLight hover:text-akasaGold" data-page="about">About Us</a></li>
-                        <li><a href="#" class="nav-link text-akasaLight hover:text-akasaGold" data-page="staff">Staff</a></li>
-                        <li><a href="#" class="nav-link text-akasaLight hover:text-akasaGold" data-page="apply">Apply</a></li>
+                        <li><a href="#" class="nav-link text-orange-100 hover:text-white" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link text-orange-100 hover:text-white" data-page="fleet">Fleet</a></li>
+                        <li><a href="#" class="nav-link text-orange-100 hover:text-white" data-page="about">About Us</a></li>
+                        <li><a href="#" class="nav-link text-orange-100 hover:text-white" data-page="staff">Staff</a></li>
+                        <li><a href="#" class="nav-link text-orange-100 hover:text-white" data-page="apply">Apply</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-2xl text-akasaLight hover:text-akasaGold"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="text-2xl text-akasaLight hover:text-akasaGold"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-2xl text-akasaLight hover:text-akasaGold"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-2xl text-akasaLight hover:text-akasaGold"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-                    <p class="text-akasaLight">Email: info@akasaairvirtual.com</p>
-                    <p class="text-akasaLight">Website: www.akasaairvirtual.com</p>
+                    <p class="text-orange-100">Email: info@akasaairvirtual.com</p>
+                    <p class="text-orange-100">Website: www.akasaairvirtual.com</p>
                 </div>
             </div>
             
-            <div class="border-t border-blue-400 mt-8 pt-8 text-center text-akasaLight">
+            <div class="border-t border-orange-300 mt-8 pt-8 text-center text-orange-100">
                 <p>&copy; 2023 Akasa Air Virtual. All rights reserved.</p>
                 <p class="mt-2">This is a virtual airline for flight simulation purposes only and is not affiliated with any real-world airline.</p>
             </div>
