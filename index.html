@@ -1,14 +1,9 @@
-# Akasa Air Virtual - Complete Website
-
-I've created a complete website for Akasa Air Virtual using the content from your images. The design maintains the orange theme while incorporating all the requested sections.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akasa Air Virtual - Experience the Skies</title>
+    <title>Akasa Air Virtual - Experience the Virtual Skies</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -26,25 +21,11 @@ I've created a complete website for Akasa Air Virtual using the content from you
         }
     </script>
     <style>
-        .page-section {
-            display: none;
-        }
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
         .aircraft-card {
             transition: transform 0.3s ease;
         }
         .aircraft-card:hover {
             transform: translateY(-5px);
-        }
-        .nav-link.active {
-            border-bottom: 3px solid #FF8C42;
         }
         .gradient-bg {
             background: linear-gradient(135deg, #FF5C00 0%, #FF8C42 100%);
@@ -58,522 +39,787 @@ I've created a complete website for Akasa Air Virtual using the content from you
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(255, 92, 0, 0.3);
         }
-        .route-map {
-            background: linear-gradient(rgba(255, 92, 0, 0.8), rgba(255, 140, 66, 0.8)), url('https://images.unsplash.com/photo-1556388155-4cee37c8f8b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
+        .spec-bar {
+            transition: width 1.5s ease-in-out;
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Section spacing */
+        section {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Hero section background */
+        .hero-pattern {
+            background-color: #ffedd5;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff5c00' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
 <body class="bg-akasaLight font-sans">
     <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+    <header class="gradient-bg text-white shadow-lg fixed w-full z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <div class="text-white text-4xl mr-2">
-                        <i class="fas fa-plane-departure"></i>
+                        <i class="fas fa-plane-departure" aria-hidden="true"></i>
                     </div>
                     <h1 class="text-2xl font-bold">Akasa Air Virtual</h1>
                 </div>
                 
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8">
-                        <li><a href="#" class="nav-link active font-semibold py-2" data-page="home">Home</a></li>
-                        <li><a href="#" class="nav-link font-semibold py-2" data-page="about">About Us</a></li>
-                        <li><a href="#" class="nav-link font-semibold py-2" data-page="staff">Staff</a></li>
-                        <li><a href="#" class="nav-link font-semibold py-2" data-page="ranks">Ranks</a></li>
-                        <li><a href="#" class="nav-link font-semibold py-2" data-page="operations">Operations</a></li>
-                        <li><a href="#" class="nav-link font-semibold py-2" data-page="apply">Apply</a></li>
+                        <li><a href="#home" class="font-semibold py-2 hover:border-b-2 hover:border-white">Home</a></li>
+                        <li><a href="#about" class="font-semibold py-2 hover:border-b-2 hover:border-white">About Us</a></li>
+                        <li><a href="#staff" class="font-semibold py-2 hover:border-b-2 hover:border-white">Staff</a></li>
+                        <li><a href="#ranks" class="font-semibold py-2 hover:border-b-2 hover:border-white">Ranks</a></li>
+                        <li class="relative group">
+                            <a href="#operations" class="font-semibold py-2 hover:border-b-2 hover:border-white">Operations</a>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <a href="#fleet" class="block px-4 py-2 text-akasaDark hover:bg-orange-100">Our Fleet</a>
+                                <a href="#hubs" class="block px-4 py-2 text-akasaDark hover:bg-orange-100">Our Hubs</a>
+                                <a href="#routes" class="block px-4 py-2 text-akasaDark hover:bg-orange-100">Our Routes</a>
+                            </div>
+                        </li>
+                        <li><a href="#apply" class="font-semibold py-2 hover:border-b-2 hover:border-white">Apply</a></li>
                     </ul>
                 </nav>
                 
-                <button class="md:hidden text-2xl" id="mobile-menu-button">
+                <button class="md:hidden text-2xl" id="mobileMenuButton" aria-label="Toggle navigation menu">
                     <i class="fas fa-bars"></i>
                 </button>
+            </div>
+            
+            <!-- Mobile menu (hidden by default) -->
+            <div class="mobile-menu mt-4" id="mobileMenu">
+                <ul class="space-y-3 pb-4">
+                    <li><a href="#home" class="block font-semibold py-2">Home</a></li>
+                    <li><a href="#about" class="block font-semibold py-2">About Us</a></li>
+                    <li><a href="#staff" class="block font-semibold py-2">Staff</a></li>
+                    <li><a href="#ranks" class="block font-semibold py-2">Ranks</a></li>
+                    <li class="pt-2">
+                        <span class="font-semibold">Operations</span>
+                        <ul class="pl-4 mt-2 space-y-2">
+                            <li><a href="#fleet" class="block py-1 text-orange-100 hover:text-white">Our Fleet</a></li>
+                            <li><a href="#hubs" class="block py-1 text-orange-100 hover:text-white">Our Hubs</a></li>
+                            <li><a href="#routes" class="block py-1 text-orange-100 hover:text-white">Our Routes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#apply" class="block font-semibold py-2">Apply</a></li>
+                </ul>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu hidden gradient-bg text-white py-4 shadow-lg" id="mobile-menu">
-        <ul class="flex flex-col items-center space-y-4">
-            <li><a href="#" class="nav-link active font-semibold" data-page="home">Home</a></li>
-            <li><a href="#" class="nav-link font-semibold" data-page="about">About Us</a></li>
-            <li><a href="#" class="nav-link font-semibold" data-page="staff">Staff</a></li>
-            <li><a href="#" class="nav-link font-semibold" data-page="ranks">Ranks</a></li>
-            <li><a href="#" class="nav-link font-semibold" data-page="operations">Operations</a></li>
-            <li><a href="#" class="nav-link font-semibold" data-page="apply">Apply</a></li>
-        </ul>
-    </div>
-
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Home Page -->
-        <section id="home" class="page-section active">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-                <div class="h-64 gradient-bg flex items-center justify-center">
-                    <div class="text-center text-white px-4">
-                        <h2 class="text-4xl font-bold mb-4">Welcome to Akasa Air Virtual</h2>
-                        <p class="text-xl">Experience the thrill of virtual aviation with India's newest airline</p>
-                    </div>
-                </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-pattern pt-32 pb-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-akasaOrange">Welcome to the Virtual Skies of Akasa Air</h2>
+                <p class="text-xl text-akasaDark max-w-3xl mx-auto mb-10">Soar Higher, Together! We're redefining the virtual skies with innovation, inclusivity, and excellence.</p>
+                <a href="#apply" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg inline-block">Join Us Today</a>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
-                    <div class="text-4xl text-akasaOrange mb-4">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Modern Fleet</h3>
-                    <p class="text-gray-600">Fly the latest Boeing 737 MAX 8 aircraft with detailed simulations.</p>
-                </div>
+        <!-- Features Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-akasaOrange text-center">Why Fly With Akasa Air Virtual?</h2>
                 
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
-                    <div class="text-4xl text-akasaOrange mb-4">
-                        <i class="fas fa-globe-asia"></i>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-orange-50 rounded-lg">
+                        <div class="text-akasaOrange text-4xl mb-4">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Authentic Routes</h3>
+                        <p class="text-gray-600">Explore a growing network of domestic and international destinations with realistic flight schedules.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Global Network</h3>
-                    <p class="text-gray-600">Connect to destinations across India and around the world.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-lg text-center border-t-4 border-akasaOrange">
-                    <div class="text-4xl text-akasaOrange mb-4">
-                        <i class="fas fa-users"></i>
+                    
+                    <div class="text-center p-6 bg-orange-50 rounded-lg">
+                        <div class="text-akasaOrange text-4xl mb-4">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Modern Fleet</h3>
+                        <p class="text-gray-600">Fly the latest aircraft, including the state-of-the-art Boeing 737 MAX with detailed flight dynamics.</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Community</h3>
-                    <p class="text-gray-600">Join a friendly community of aviation enthusiasts.</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Latest News</h2>
-                <div class="space-y-6">
-                    <div class="border-l-4 border-akasaOrange pl-4 py-2">
-                        <h3 class="text-xl font-semibold">New Routes Added</h3>
-                        <p class="text-gray-600">We've added new routes to Southeast Asia. Check the schedule for details.</p>
-                        <p class="text-sm text-gray-500">Posted on: June 15, 2023</p>
-                    </div>
-                    <div class="border-l-4 border-akasaOrange pl-4 py-2">
-                        <h3 class="text-xl font-semibold">737 MAX Now Available</h3>
-                        <p class="text-gray-600">Our fleet now includes the Boeing 737 MAX 8 aircraft.</p>
-                        <p class="text-sm text-gray-500">Posted on: May 28, 2023</p>
+                    
+                    <div class="text-center p-6 bg-orange-50 rounded-lg">
+                        <div class="text-akasaOrange text-4xl mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Community Spirit</h3>
+                        <p class="text-gray-600">Join a vibrant community of passionate pilots and aviation enthusiasts in our active Discord server.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Page -->
-        <section id="about" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">About Akasa Air Virtual</h2>
-            
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Soar Higher, Together!</h3>
-                <p class="text-gray-600 mb-4">At <strong>Akasa Air Virtual</strong>, we're redefining the virtual skies with innovation, inclusivity, and excellence. As a proud member of the Infinite Flight community, we bring the joy of aviation to life through immersive experiences and realistic operations.</p>
-                <p class="text-gray-600 mb-6">Whether you're a seasoned virtual aviator or just beginning your journey, Akasa Air Virtual offers:</p>
+        <!-- About Us Section -->
+        <section id="about" class="py-16 bg-orange-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">About Akasa Air Virtual</h2>
                 
-                <ul class="list-disc list-inside space-y-2 mb-6 text-gray-600">
-                    <li><strong>Authentic Routes:</strong> Explore a growing network of domestic and international destinations.</li>
-                    <li><strong>Modern Fleet:</strong> Fly the latest aircraft, including the state-of-the-art Boeing 737 MAX.</li>
-                    <li><strong>Community Spirit:</strong> Join a vibrant community of passionate pilots and aviation enthusiasts.</li>
-                </ul>
-                
-                <p class="text-gray-600 mb-6">Ready to take off with us? Join Akasa Air Virtual today and experience the skies like never before!</p>
-                
-                <div class="bg-orange-50 p-6 rounded-lg mt-6">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Our Goals</h3>
-                    <p class="text-gray-600 mb-4">At Akasa Air Virtual, our mission is to provide a realistic, engaging, and professional platform for aviation enthusiasts to explore their passion for flying. We aim to emulate the operations of Akasa Air with exceptional attention to detail, offering pilots an opportunity to experience the thrill and responsibilities of being part of a Virtual Airline.</p>
-                    <p class="text-gray-600">Our goal is to foster a supportive and inclusive community that welcomes pilots of all experience levels, from beginners to seasoned veterans. Through innovation and teamwork, we strive to deliver a unique virtual aviation experience that blends realism, excitement, and professionalism.</p>
+                <div class="bg-white p-8 rounded-lg shadow-lg mb-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Our Mission</h3>
+                    <p class="text-gray-600 mb-6">At Akasa Air Virtual, our mission is to provide a realistic, engaging, and professional platform for aviation enthusiasts to explore their passion for flying. We aim to emulate the operations of Akasa Air with exceptional attention to detail, offering pilots an opportunity to experience the thrill and responsibilities of being part of a Virtual Airline.</p>
+                    
+                    <p class="text-gray-600 mb-6">Our goal is to foster a supportive and inclusive community that welcomes pilots of all experience levels, from beginners to seasoned veterans. Through innovation and teamwork, we strive to deliver a unique virtual aviation experience that blends realism, excitement, and professionalism.</p>
+                    
+                    <p class="text-gray-600">Whether you're flying a short domestic route or embarking on an international journey, Akasa Air Virtual is dedicated to helping you refine your skills, connect with fellow enthusiasts, and share the joy of aviation in a vibrant, collaborative environment.</p>
                 </div>
                 
-                <div class="bg-orange-50 p-6 rounded-lg mt-6">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">A Message from our CEO</h3>
-                    <p class="text-gray-600 mb-4">Dear Pilots,</p>
-                    <p class="text-gray-600 mb-4">On behalf of the entire team at Akasa Air Virtual, I would like to extend a warm welcome to you as a valued member of our virtual airline. Whether you're a seasoned pilot or just starting your journey in Infinite Flight, we are excited to have you on board as part of the Akasa Air family.</p>
-                    <p class="text-gray-600 mb-4">At Akasa Air Virtual, we believe in fostering a community of professionalism, passion, and camaraderie. Our mission is to provide a realistic, enjoyable, and dynamic environment for all our pilots, offering the opportunity to fly exciting routes, participate in virtual events, and develop your flying skills alongside fellow aviation enthusiasts from all around the world.</p>
-                    <p class="text-gray-600 mb-4">As a pilot in Akasa Air Virtual, you will have access to a wide range of resources, including detailed flight operations, support from our staff, and regular events that enhance your flying experience. Our goal is to ensure that you have the best possible experience as a part of this virtual airline, and we are always here to help you achieve your aviation dreams.</p>
-                    <p class="text-gray-600">Fly safe,<br><strong>Shreyash_Chauhan</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Staff Page -->
-        <section id="staff" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Meet our Team</h2>
-            
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <p class="text-gray-600 mb-6">At <strong>Akasa Air Virtual</strong>, our dedicated team of staff members works tirelessly to ensure smooth operations, engaging events, and an unmatched virtual aviation experience for our pilots. From scheduling exciting routes to organizing community events, each member of our team plays a vital role in keeping our virtual airline running like clockwork.</p>
-                <p class="text-gray-600 mb-8">Passionate about aviation and committed to providing the best experience, our staff brings together expertise, enthusiasm, and teamwork to create a thriving environment for all.</p>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange text-center">
-                        <div class="h-48 bg-orange-100 flex items-center justify-center">
-                            <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">A Message from our CEO</h3>
+                    <div class="flex items-start mb-6">
+                        <div class="bg-akasaOrange rounded-full p-3 mr-4 flex-shrink-0">
+                            <i class="fas fa-quote-left text-white"></i>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-1">Shreyash_Chauhan</h3>
-                            <p class="text-akasaOrange font-medium mb-3">Chief Executive Officer</p>
-                            <p class="text-gray-600">Our goal is to create a realistic and fun flying experience for all pilots while building a great community.</p>
-                        </div>
+                        <p class="text-gray-600 italic">"On behalf of the entire team at Akasa Air Virtual, I would like to extend a warm welcome to you as a valued member of our virtual airline. Whether you're a seasoned pilot or just starting your journey in Infinite Flight, we are excited to have you on board as part of the Akasa Air family."</p>
                     </div>
                     
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange text-center">
-                        <div class="h-48 bg-orange-100 flex items-center justify-center">
-                            <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-1">TheHabib_Gamera</h3>
-                            <p class="text-akasaOrange font-medium mb-3">Chief Operating Officer</p>
-                            <p class="text-gray-600">I manage day-to-day operations, events, and pilot activities to keep everything running smoothly.</p>
-                        </div>
-                    </div>
+                    <p class="text-gray-600 mb-6">At Akasa Air Virtual, we believe in fostering a community of professionalism, passion, and camaraderie. Our mission is to provide a realistic, enjoyable, and dynamic environment for all our pilots, offering the opportunity to fly exciting routes, participate in virtual events, and develop your flying skills alongside fellow aviation enthusiasts from all around the world.</p>
                     
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange text-center">
-                        <div class="h-48 bg-orange-100 flex items-center justify-center">
-                            <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-1">Vacant</h3>
-                            <p class="text-akasaOrange font-medium mb-3">Chief Marketing Officer</p>
-                            <p class="text-gray-600">I handle promotions, events, and community engagement to keep our VA vibrant and growing.</p>
-                        </div>
-                    </div>
+                    <p class="text-gray-600 mb-6">As a pilot in Akasa Air Virtual, you will have access to a wide range of resources, including detailed flight operations, support from our staff, and regular events that enhance your flying experience. Our goal is to ensure that you have the best possible experience as a part of this virtual airline, and we are always here to help you achieve your aviation dreams.</p>
                     
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-akasaOrange text-center">
-                        <div class="h-48 bg-orange-100 flex items-center justify-center">
-                            <i class="fas fa-user-circle text-6xl text-akasaOrange"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-1">Join Our Team</h3>
-                            <p class="text-akasaOrange font-medium mb-3">We're Hiring!</p>
-                            <p class="text-gray-600">Interested in joining our team? We're always looking for passionate aviation enthusiasts.</p>
-                        </div>
+                    <p class="text-gray-600">Please take a moment to familiarize yourself with the pilot handbook, which contains everything you need to know about our operations, rules, and how we operate as a team. If you ever have any questions or need assistance, don't hesitate to reach out to our staff. We're here to support you every step of the way.</p>
+                    
+                    <div class="mt-6 text-right">
+                        <p class="font-semibold text-akasaOrange">Shreyash_Chauhan</p>
+                        <p class="text-gray-600">Chief Executive Officer</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Ranks Page -->
-        <section id="ranks" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Rank Structure</h2>
-            
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <p class="text-gray-600 mb-6">At <strong>Akasa Air Virtual</strong>, we believe in rewarding dedication, skill, and experience. Our rank structure is designed to motivate pilots as they progress through their virtual flying journey.</p>
-                <p class="text-gray-600 mb-8">Starting from the first flight, pilots can climb the ranks by logging hours, completing flights, and showcasing their commitment to our VA. With each rank, you'll unlock access to new routes, aircraft, and opportunities that make the experience even more exciting.</p>
+        <!-- Staff Section -->
+        <section id="staff" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Meet Our Team</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">At Akasa Air Virtual, our dedicated team of staff members works tirelessly to ensure smooth operations, engaging events, and an unmatched virtual aviation experience for our pilots.</p>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- CEO -->
                     <div class="bg-orange-50 p-6 rounded-lg text-center">
-                        <div class="text-4xl text-akasaOrange mb-4">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Trainee Pilot</h3>
-                        <p class="text-gray-600">Begin your journey flying domestic routes, focusing on building foundational skills.</p>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-6 rounded-lg text-center">
-                        <div class="text-4xl text-akasaOrange mb-4">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Second Officer</h3>
-                        <p class="text-gray-600">Continue building experience with more complex routes and aircraft systems.</p>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-6 rounded-lg text-center">
-                        <div class="text-4xl text-akasaOrange mb-4">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">First Officer</h3>
-                        <p class="text-gray-600">Take on more responsibility with international routes and advanced procedures.</p>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-6 rounded-lg text-center">
-                        <div class="text-4xl text-akasaOrange mb-4">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-akasaOrange rounded-full flex items-center justify-center text-white text-3xl">
                             <i class="fas fa-crown"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2">Captain</h3>
-                        <p class="text-gray-600">Reach the highest rank with access to all routes and leadership opportunities.</p>
+                        <h3 class="text-xl font-semibold mb-2">Shreyash_Chauhan</h3>
+                        <p class="text-akasaOrange font-medium mb-4">Chief Executive Officer</p>
+                        <p class="text-gray-600 text-sm">Our goal is to create a realistic and fun flying experience for all pilots while building a great community. I oversee operations and events to ensure everything runs smoothly.</p>
                     </div>
-                </div>
-                
-                <div class="bg-orange-100 p-6 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Rank Progression</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-semibold">Trainee Pilot to Second Officer</span>
-                                <span>10 flight hours</span>
-                            </div>
-                            <div class="w-full bg-orange-200 rounded-full h-2.5">
-                                <div class="bg-akasaOrange h-2.5 rounded-full" style="width: 25%"></div>
-                            </div>
+                    
+                    <!-- COO -->
+                    <div class="bg-orange-50 p-6 rounded-lg text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-akasaOrange rounded-full flex items-center justify-center text-white text-3xl">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-semibold">Second Officer to First Officer</span>
-                                <span>25 flight hours</span>
-                            </div>
-                            <div class="w-full bg-orange-200 rounded-full h-2.5">
-                                <div class="bg-akasaOrange h-2.5 rounded-full" style="width: 50%"></div>
-                            </div>
+                        <h3 class="text-xl font-semibold mb-2">TheHabib_Gamera</h3>
+                        <p class="text-akasaOrange font-medium mb-4">Chief Operating Officer</p>
+                        <p class="text-gray-600 text-sm">I manage day-to-day operations, events, and pilot activities to keep everything running smoothly. If you ever need help or have questions, I'm here for you.</p>
+                    </div>
+                    
+                    <!-- CMO 1 -->
+                    <div class="bg-orange-50 p-6 rounded-lg text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-akasaOrange rounded-full flex items-center justify-center text-white text-3xl">
+                            <i class="fas fa-bullhorn"></i>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-semibold">First Officer to Captain</span>
-                                <span>50 flight hours</span>
-                            </div>
-                            <div class="w-full bg-orange-200 rounded-full h-2.5">
-                                <div class="bg-akasaOrange h-2.5 rounded-full" style="width: 75%"></div>
-                            </div>
+                        <h3 class="text-xl font-semibold mb-2">Vacant</h3>
+                        <p class="text-akasaOrange font-medium mb-4">Chief Marketing Officer</p>
+                        <p class="text-gray-600 text-sm">I handle promotions, events, and community engagement to keep our VA vibrant and growing. Feel free to share your ideas—we're always open to new ways to make things exciting!</p>
+                    </div>
+                    
+                    <!-- CMO 2 -->
+                    <div class="bg-orange-50 p-6 rounded-lg text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-akasaOrange rounded-full flex items-center justify-center text-white text-3xl">
+                            <i class="fas fa-bullhorn"></i>
                         </div>
+                        <h3 class="text-xl font-semibold mb-2">Vacant</h3>
+                        <p class="text-akasaOrange font-medium mb-4">Chief Marketing Officer</p>
+                        <p class="text-gray-600 text-sm">I handle promotions, events, and community engagement to keep our VA vibrant and growing. Feel free to share your ideas—we're always open to new ways to make things exciting!</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Operations Page -->
-        <section id="operations" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Operations</h2>
-            
-            <!-- Fleet Section -->
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Our Fleet</h2>
+        <!-- Ranks Section -->
+        <section id="ranks" class="py-16 bg-orange-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Rank Structure</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">At Akasa Air Virtual, we believe in rewarding dedication, skill, and experience. Our rank structure is designed to motivate pilots as they progress through their virtual flying journey.</p>
                 
-                <div class="flex flex-col lg:flex-row gap-8 mb-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-10 p-6 bg-orange-100 rounded-lg">
+                        <div>
+                            <h3 class="text-xl font-semibold text-akasaOrange">Trainee Pilot</h3>
+                            <p class="text-gray-600">Begin your journey flying domestic routes, focusing on building foundational skills and gaining experience.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="bg-akasaOrange text-white px-4 py-2 rounded-full text-sm font-semibold">Entry Level</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                        <div class="text-center p-4 border border-orange-200 rounded-lg">
+                            <div class="text-akasaOrange text-3xl mb-2">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1">Second Officer</h4>
+                            <p class="text-sm text-gray-600">Progress to more challenging routes</p>
+                        </div>
+                        
+                        <div class="text-center p-4 border border-orange-200 rounded-lg">
+                            <div class="text-akasaOrange text-3xl mb-2">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1">First Officer</h4>
+                            <p class="text-sm text-gray-600">Gain experience on international routes</p>
+                        </div>
+                        
+                        <div class="text-center p-4 border border-orange-200 rounded-lg">
+                            <div class="text-akasaOrange text-3xl mb-2">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1">Senior First Officer</h4>
+                            <p class="text-sm text-gray-600">Mentor junior pilots and take on leadership</p>
+                        </div>
+                        
+                        <div class="text-center p-4 border border-orange-200 rounded-lg">
+                            <div class="text-akasaOrange text-3xl mb-2">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4 class="font-semibold mb-1">Captain</h4>
+                            <p class="text-sm text-gray-600">Reach the highest rank with full privileges</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-gray-600">Starting from the first flight, pilots can climb the ranks by logging hours, completing flights, and showcasing their commitment to our VA. With each rank, you'll unlock access to new routes, aircraft, and opportunities that make the experience even more exciting.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fleet Section -->
+        <section id="fleet" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Fleet</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">Modern. Efficient. Reliable. At Akasa Air Virtual, we take pride in operating a state-of-the-art fleet that blends efficiency, comfort, and innovation.</p>
+                
+                <div class="flex flex-col lg:flex-row gap-8 mb-12">
+                    <!-- Aircraft Image -->
                     <div class="lg:w-1/2">
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                             <div class="h-80 bg-orange-100 flex items-center justify-center p-4">
-                                <i class="fas fa-plane text-8xl text-akasaOrange"></i>
+                                <img src="https://images.unsplash.com/photo-1588615323810-5df10e2a1c2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                                     alt="Boeing 737 MAX 8 in Akasa Air livery" class="object-contain h-full w-full">
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Aircraft Details -->
                     <div class="lg:w-1/2">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-semibold mb-4 text-akasaOrange">Boeing 737 MAX 8</h3>
-                            <p class="text-gray-600 mb-6">The Boeing 737 MAX 8 is our flagship aircraft, offering exceptional fuel efficiency, reduced emissions, and a superior passenger experience. It's the backbone of our fleet, serving both domestic and international routes.</p>
+                            <p class="text-gray-600 mb-6">The Boeing 737 MAX 8 is the backbone of our fleet, renowned for its reliability and versatility. Whether you're flying a short-haul domestic route or a longer international sector, this aircraft delivers top-notch performance and realism.</p>
                             
                             <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div class="bg-orange-50 p-4 rounded-lg">
+                                <div class="bg-white p-4 rounded-lg">
                                     <div class="text-akasaOrange text-2xl mb-2">
-                                        <i class="fas fa-users"></i>
+                                        <i class="fas fa-users" aria-hidden="true"></i>
                                     </div>
                                     <h4 class="font-semibold">Capacity</h4>
                                     <p class="text-gray-600">189 passengers</p>
                                 </div>
                                 
-                                <div class="bg-orange-50 p-4 rounded-lg">
+                                <div class="bg-white p-4 rounded-lg">
                                     <div class="text-akasaOrange text-2xl mb-2">
-                                        <i class="fas fa-road"></i>
+                                        <i class="fas fa-road" aria-hidden="true"></i>
                                     </div>
                                     <h4 class="font-semibold">Range</h4>
                                     <p class="text-gray-600">3,550 NM</p>
                                 </div>
                                 
-                                <div class="bg-orange-50 p-4 rounded-lg">
+                                <div class="bg-white p-4 rounded-lg">
                                     <div class="text-akasaOrange text-2xl mb-2">
-                                        <i class="fas fa-tachometer-alt"></i>
+                                        <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
                                     </div>
                                     <h4 class="font-semibold">Cruise Speed</h4>
                                     <p class="text-gray-600">Mach 0.79</p>
                                 </div>
                                 
-                                <div class="bg-orange-50 p-4 rounded-lg">
+                                <div class="bg-white p-4 rounded-lg">
                                     <div class="text-akasaOrange text-2xl mb-2">
-                                        <i class="fas fa-gas-pump"></i>
+                                        <i class="fas fa-gas-pump" aria-hidden="true"></i>
                                     </div>
                                     <h4 class="font-semibold">Fuel Efficiency</h4>
                                     <p class="text-gray-600">14% better than NG</p>
                                 </div>
                             </div>
+                            
+                            <div class="bg-white p-4 rounded-lg mb-6">
+                                <h4 class="font-semibold mb-2 text-akasaOrange">Highlights:</h4>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                    <li>Fuel-efficient and environmentally friendly</li>
+                                    <li>Advanced avionics for smooth operations</li>
+                                    <li>Spacious and comfortable cabin layout</li>
+                                    <li>Equipped with advanced winglets for improved fuel efficiency</li>
+                                    <li>Sky Interior with modern LED lighting</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-orange-50 p-6 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Why Fly Our Fleet?</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><strong>Realism at Its Best:</strong> Experience detailed flight dynamics and accurate liveries in Infinite Flight.</li>
-                        <li><strong>Eco-Friendly Operations:</strong> Embrace the latest technology in fuel efficiency and reduced emissions.</li>
-                        <li><strong>Pilot-Friendly Features:</strong> Enjoy cutting-edge navigation systems and advanced cockpit design.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Hubs Section -->
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Our Hubs</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-orange-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Kempegowda International Airport (BLR)</h3>
-                        <p class="text-gray-600 mb-4">Kempegowda International Airport (BLR) is the main gateway to Bengaluru and a key hub in our virtual airline network. Located in Devanahalli, about 40 km from the city center, BLR offers excellent connectivity, modern facilities, and a smooth travel experience for both domestic and international flights.</p>
-                        <p class="text-gray-600">The airport features a state-of-the-art terminal with world-class amenities, including lounges, duty-free shopping, and a wide range of dining options.</p>
-                    </div>
+                <!-- Why Fly Our Fleet -->
+                <div class="bg-orange-50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Why Fly Our Fleet?</h3>
                     
-                    <div class="bg-orange-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Chhatrapati Shivaji Maharaj International Airport (BOM)</h3>
-                        <p class="text-gray-600 mb-4">Chhatrapati Shivaji Maharaj International Airport (BOM) is one of India's busiest and most important airports, located in Mumbai, the financial capital of the country. Serving as a major gateway to India, BOM offers seamless connectivity to both domestic and international destinations.</p>
-                        <p class="text-gray-600">The airport boasts two terminals—one for domestic and the other for international flights—equipped with world-class facilities.</p>
-                    </div>
-                </div>
-                
-                <div class="bg-orange-100 p-6 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Our Key Hubs</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <i class="fas fa-map-marker-alt"></i>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Realism at Its Best:</span> Experience detailed flight dynamics and accurate liveries in Infinite Flight.</span>
                             </div>
-                            <h4 class="font-semibold">BENGALURU</h4>
-                            <p class="text-gray-600">Main hub connecting pilots to numerous domestic and international routes.</p>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Eco-Friendly Operations:</span> Embrace the latest technology in fuel efficiency and reduced emissions.</span>
+                            </div>
                         </div>
                         
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Pilot-Friendly Features:</span> Enjoy cutting-edge navigation systems and advanced cockpit design.</span>
                             </div>
-                            <h4 class="font-semibold">MUMBAI</h4>
-                            <p class="text-gray-600">Major city in our network, offering a wide range of domestic and international flights.</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <i class="fas fa-map-marker-alt"></i>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Expanding Horizons:</span> As we grow, we aim to expand our fleet with additional aircraft to explore new routes and opportunities.</span>
                             </div>
-                            <h4 class="font-semibold">DELHI</h4>
-                            <p class="text-gray-600">Strategic hub offering connections to both domestic and international destinations.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Routes Section -->
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-6 text-akasaOrange">Our Routes</h2>
-                
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Domestic Routes</h3>
-                    <p class="text-gray-600 mb-4">Our <strong>Domestic Routes</strong> connect key cities across the country, offering a variety of exciting flights for every pilot. Whether you're flying a quick hop or enjoying a scenic route, these flights are perfect for building hours and gaining experience.</p>
-                    <p class="text-gray-600">Explore the heart of the nation with smooth, reliable, and enjoyable domestic routes!</p>
-                </div>
-                
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold mb-4 text-akasaOrange">International Routes</h3>
-                    <p class="text-gray-600 mb-4">Our <strong>International Routes</strong> take you beyond borders, connecting you to iconic cities and exciting destinations across the globe. From bustling metropolises to serene getaways, these long-haul flights offer a thrilling experience for every pilot.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mt-6">
-                        <div class="bg-orange-50 p-4 rounded-lg">
-                            <h4 class="font-semibold text-akasaOrange">ABU DHABI</h4>
-                            <p class="text-gray-600">An important destination in our international network, offering seamless connections to the Middle East and beyond.</p>
-                        </div>
-                        
-                        <div class="bg-orange-50 p-4 rounded-lg">
-                            <h4 class="font-semibold text-akasaOrange">KUWAIT</h4>
-                            <p class="text-gray-600">A key international destination offering easy access to the Middle East and surrounding regions.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="route-map p-8 rounded-lg text-white text-center">
-                    <h3 class="text-2xl font-bold mb-4">Explore Our Route Network</h3>
-                    <p class="mb-6">We offer a wide variety of routes, including many more domestic and international destinations waiting for you to explore.</p>
-                    <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">View Full Route Map</button>
                 </div>
             </div>
         </section>
 
-        <!-- Apply Page -->
-        <section id="apply" class="page-section">
-            <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Join Akasa Air Virtual</h2>
-            
-            <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-                <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Why Join Us?</h3>
-                <p class="text-gray-600 mb-6">Welcome to Akasa Air Virtual! We're thrilled that you're interested in joining our growing family of aviation enthusiasts. At Akasa Air Virtual, we strive to provide a realistic, professional, and fun environment for pilots of all skill levels.</p>
+        <!-- Hubs Section -->
+        <section id="hubs" class="py-16 bg-orange-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Hubs</h2>
                 
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-4 text-akasaOrange">What We Offer</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
-                                <span><strong>Realistic Operations:</strong> Experience authentic flight schedules and routes tailored for realism.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
-                                <span><strong>Supportive Community:</strong> Connect with like-minded aviation enthusiasts through our active Discord server.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
-                                <span><strong>Career Growth:</strong> Earn promotions, achieve milestones, and build your virtual flying career.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-akasaOrange mt-1 mr-2"></i>
-                                <span><strong>Exclusive Events:</strong> Participate in exciting weekly group flights and events.</span>
-                            </li>
-                        </ul>
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Bengaluru -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Kempegowda International Airport (BLR)/(VOBL)</h3>
+                        <p class="text-gray-600 mb-4">Bengaluru serves as the main hub for Akasa Air Virtual, connecting pilots to numerous domestic and international routes.</p>
+                        <p class="text-gray-600">Located in Devanahalli, about 40 km from the city center, BLR offers excellent connectivity, modern facilities, and a smooth travel experience for both domestic and international flights.</p>
                     </div>
                     
-                    <div>
-                        <h4 class="text-xl font-semibold mb-4 text-akasaOrange">Requirements</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>Infinite Flight Pro Subscription</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>At least Grade 3 in Infinite Flight</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>Active IFC account in good standing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>Access to Discord</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>At least 13 years old</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-akasaOrange mt-1 mr-2"></i>
-                                <span>Not on IFVARB Blacklist or Watchlist</span>
-                            </li>
-                        </ul>
+                    <!-- Mumbai -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Chhatrapati Shivaji Maharaj International Airport (BOM)/(VABB)</h3>
+                        <p class="text-gray-600 mb-4">Mumbai, our second hub, is a major city in our network, offering a wide range of domestic and international flights.</p>
+                        <p class="text-gray-600">Known as the financial capital of India, it's a bustling metropolis that connects travelers to exciting destinations across the globe. The airport boasts two terminals with world-class facilities.</p>
+                    </div>
+                    
+                    <!-- Delhi -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Indira Gandhi International Airport (DEL)/(VIDP)</h3>
+                        <p class="text-gray-600 mb-4">Delhi serves as a strategic hub, offering connections to both domestic and international destinations.</p>
+                        <p class="text-gray-600">With its rich history and modern infrastructure, Delhi is the perfect gateway for pilots to embark on flights across India and beyond. Whether flying short domestic routes or long-haul international flights, Delhi is a vital part of our network.</p>
                     </div>
                 </div>
                 
-                <div class="bg-orange-50 p-6 rounded-lg">
-                    <h4 class="text-xl font-semibold mb-4 text-akasaOrange">Application Process</h4>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <span class="bg-akasaOrange text-white rounded-full h-12 w-12 flex items-center justify-center mx-auto">1</span>
-                            </div>
-                            <h5 class="font-semibold">Complete Form</h5>
-                            <p class="text-gray-600">Fill out our application form with your details</p>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">International Destinations</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-akasaDark">Abu Dhabi</h4>
+                            <p class="text-gray-600">Abu Dhabi is an important destination in our international network, offering seamless connections to the Middle East and beyond. As a vibrant city known for its modern architecture and rich cultural heritage, it serves as a perfect starting point for your international flights.</p>
                         </div>
                         
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <span class="bg-akasaOrange text-white rounded-full h-12 w-12 flex items-center justify-center mx-auto">2</span>
-                            </div>
-                            <h5 class="font-semibold">Join Discord</h5>
-                            <p class="text-gray-600">Join our Discord server after approval</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <div class="text-4xl text-akasaOrange mb-2">
-                                <span class="bg-akasaOrange text-white rounded-full h-12 w-12 flex items-center justify-center mx-auto">3</span>
-                            </div>
-                            <h5 class="font-semibold">Start Flying</h5>
-                            <p class="text-gray-600">Access resources and begin your journey</p>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-akasaDark">Kuwait</h4>
+                            <p class="text-gray-600">Kuwait is a key international destination in our network, offering easy access to the Middle East and surrounding regions. Known for its modern skyline and rich history, it's an exciting city for pilots to explore, with connections to major hubs in Asia, Europe, and beyond.</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Routes Section -->
+        <section id="routes" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Our Routes</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- Domestic Routes -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">Domestic Routes</h3>
+                        <p class="text-gray-600 mb-6">Our Domestic Routes connect key cities across the country, offering a variety of exciting flights for every pilot. Whether you're flying a quick hop or enjoying a scenic route, these flights are perfect for building hours and gaining experience.</p>
+                        
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-akasaDark">Popular Domestic Routes:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Mumbai (VABB) → Bengaluru (VOBL)</span>
+                                    <span class="font-semibold">1h 45m</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Delhi (VIDP) → Mumbai (VABB)</span>
+                                    <span class="font-semibold">2h 15m</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Bengaluru (VOBL) → Hyderabad (VOHS)</span>
+                                    <span class="font-semibold">1h 05m</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-600">Chennai (VOMM) → Bengaluru (VOBL)</span>
+                                    <span class="font-semibold">1h 00m</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- International Routes -->
+                    <div class="bg-orange-50 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-akasaOrange">International Routes</h3>
+                        <p class="text-gray-600 mb-6">Our International Routes take you beyond borders, connecting you to iconic cities and exciting destinations across the globe. From bustling metropolises to serene getaways, these long-haul flights offer a thrilling experience for every pilot.</p>
+                        
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold mb-3 text-akasaDark">Popular International Routes:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Mumbai (VABB) → Abu Dhabi (OMAA)</span>
+                                    <span class="font-semibold">3h 10m</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Delhi (VIDP) → Kuwait (OKBK)</span>
+                                    <span class="font-semibold">4h 30m</span>
+                                </li>
+                                <li class="flex justify-between border-b pb-2">
+                                    <span class="text-gray-600">Bengaluru (VOBL) → Dubai (OMDB)</span>
+                                    <span class="font-semibold">3h 45m</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="text-gray-600">Mumbai (VABB) → Doha (OTBD)</span>
+                                    <span class="font-semibold">3h 20m</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-orange-50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Routes Database</h3>
+                    <p class="text-gray-600 mb-6">We offer a wide variety of routes, including many more domestic and international destinations waiting for you to explore. From bustling cities to hidden gems, the adventure doesn't end here.</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                            <thead class="bg-akasaOrange text-white">
+                                <tr>
+                                    <th class="py-3 px-4 text-left">Flight Number</th>
+                                    <th class="py-3 px-4 text-left">Departure</th>
+                                    <th class="py-3 px-4 text-left">Arrival</th>
+                                    <th class="py-3 px-4 text-left">Flight Time</th>
+                                    <th class="py-3 px-4 text-left">Aircraft</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-orange-100">
+                                <tr>
+                                    <td class="py-3 px-4">AKJ571</td>
+                                    <td class="py-3 px-4">VABB</td>
+                                    <td class="py-3 px-4">OKKK</td>
+                                    <td class="py-3 px-4">04:47</td>
+                                    <td class="py-3 px-4">B38M</td>
+                                </tr>
+                                <tr class="bg-orange-50">
+                                    <td class="py-3 px-4">AKJ1891</td>
+                                    <td class="py-3 px-4">VABB</td>
+                                    <td class="py-3 px-4">VISR</td>
+                                    <td class="py-3 px-4">02:55</td>
+                                    <td class="py-3 px-4">B38M</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4">AKJ165E</td>
+                                    <td class="py-3 px-4">VIDP</td>
+                                    <td class="py-3 px-4">VOGO</td>
+                                    <td class="py-3 px-4">02:40</td>
+                                    <td class="py-3 px-4">B38M</td>
+                                </tr>
+                                <tr class="bg-orange-50">
+                                    <td class="py-3 px-4">AKJ1527</td>
+                                    <td class="py-3 px-4">VOBL</td>
+                                    <td class="py-3 px-4">VILK</td>
+                                    <td class="py-3 px-4">02:55</td>
+                                    <td class="py-3 px-4">B38M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p class="text-gray-600 mt-6 text-center">Check out our Discord to discover the full list of available routes and get the latest updates on new destinations!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apply Section -->
+        <section id="apply" class="py-16 bg-orange-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-akasaOrange text-center">Join Akasa Air Virtual</h2>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg mb-12">
+                    <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Why Join Us?</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Realistic Operations:</span> Experience authentic flight schedules and routes tailored for realism.</span>
+                            </div>
+                            
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Supportive Community:</span> Connect with like-minded aviation enthusiasts through our active Discord server.</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-start mb-4">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Career Growth:</span> Earn promotions, achieve milestones, and build your virtual flying career.</span>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-akasaOrange rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span class="text-gray-600"><span class="font-semibold text-akasaOrange">Exclusive Events:</span> Participate in exciting weekly group flights and events.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6 text-akasaOrange">Application Requirements</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4 text-akasaDark">Requirements:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must have an Infinite Flight Pro Subscription.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must be at least Grade 3.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must have an active IFC account that is in good standing.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must be able to access Discord.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must be at least 13 years old or above.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must not be on the IFVARB Blacklist or Watchlist.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must obtain at least 80% for the written test.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-akasaOrange rounded-full p-1 mr-3 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <span class="text-gray-600">You must be able to log one flight a month.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4 text-akasaDark">Application Process:</h4>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-akasaOrange text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">1</div>
+                                    <div>
+                                        <h5 class="font-semibold mb-1">Complete Application</h5>
+                                        <p class="text-gray-600">Fill out our online application form with your details.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-akasaOrange text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">2</div>
+                                    <div>
+                                        <h5 class="font-semibold mb-1">Written Test</h5>
+                                        <p class="text-gray-600">Complete our written test with a score of at least 80%.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-akasaOrange text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">3</div>
+                                    <div>
+                                        <h5 class="font-semibold mb-1">Join Discord</h5>
+                                        <p class="text-gray-600">Once approved, join our Discord server for communication.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-akasaOrange text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">4</div>
+                                    <div>
+                                        <h5 class="font-semibold mb-1">Start Flying</h5>
+                                        <p class="text-gray-600">Access our Crew Center and begin your journey with us!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-10">
+                        <a href="#" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg inline-block">Apply Now</a>
+                        <p class="text-gray-600 mt-4">Ready to take off? Begin your application today!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Akasa Air Virtual</h3>
+                    <p class="text-orange-100">Experience the thrill of virtual aviation with India's newest airline.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Akasa Air Virtual</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#staff" class="text-orange-100 hover:text-white">Staff</a></li>
+                        <li><a href="#fleet" class="text-orange-100 hover:text-white">Fleet</a></li>
+                        <li><a href="#ranks" class="text-orange-100 hover:text-white">Ranks</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Infinite Flight Community</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-orange-100 hover:text-white">IFC Account</a></li>
+                        <li><a href="#" class="text-orange-100 hover:text-white">IFC Thread</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-orange-100 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
             
-            <div class="bg-white p-8
+            <div class="border-t border-orange-300 mt-8 pt-8 text-center text-orange-100">
+                <p>&copy; 2023 Akasa Air Virtual. All rights reserved.</p>
+                <p class="mt-2">This is a virtual airline for flight simulation purposes only and is not affiliated with or endorsed by any real-world airline.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobileMenu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Animate progress bars when they come into view
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.spec-bar');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width;
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observe the fleet statistics section
+        const fleetStats = document.querySelector('.bg-white.p-8.rounded-lg.shadow-lg');
+        if (fleetStats) {
+            observer.observe(fleetStats);
+        }
+    </script>
+</body>
+</html>
