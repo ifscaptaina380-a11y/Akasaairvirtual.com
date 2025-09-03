@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Base styles */
         body {
             font-family: 'Prompt', sans-serif;
             background-color: #f3f4f6;
@@ -171,6 +172,74 @@
                 display: table;
             }
         }
+        
+        /* ----------------------------------- */
+        /* --- NEW CSS ANIMATIONS ADDED HERE --- */
+        /* ----------------------------------- */
+        
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for fade-in-up animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Fade-in animation for page content and sections */
+        .page-content > section {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Fade-in-up effect on specific sections and cards */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        /* Add a subtle hover effect on cards */
+        .hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animate the main page title on load */
+        .main-title {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Animate the scrollable image gallery items */
+        .image-gallery img {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .image-gallery img:nth-child(1) { animation-delay: 0.2s; }
+        .image-gallery img:nth-child(2) { animation-delay: 0.4s; }
+        .image-gallery img:nth-child(3) { animation-delay: 0.6s; }
+        .image-gallery img:nth-child(4) { animation-delay: 0.8s; }
+        .image-gallery img:nth-child(5) { animation-delay: 1.0s; }
+        .image-gallery img:nth-child(6) { animation-delay: 1.2s; }
     </style>
 </head>
 <body>
@@ -243,11 +312,11 @@
             <section id="home" class="page-content">
                 <div class="relative bg-cover bg-center h-[50vh] md:h-[70vh] flex items-center justify-center text-white" style="background-image: url('https://i.postimg.cc/52Nw5q4C/Screenshot-2025-08-15-22-44-02-75-df57d64958e53a4f86350d421f9936ba.jpg');">
                     <div class="absolute inset-0 bg-black opacity-50"></div>
-                    <h1 class="relative text-3xl md:text-6xl font-extrabold tracking-tight text-center">Welcome Onboard</h1>
+                    <h1 class="relative text-3xl md:text-6xl font-extrabold tracking-tight text-center main-title">Welcome Onboard</h1>
                 </div>
 
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-7xl mx-auto">
+                    <div class="max-w-7xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-2">Welcome to the Virtual Skies of Akasa Air</h2>
                         <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">Soar Higher, <span class="accent-color">Together!</span></h3>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-4">
@@ -265,7 +334,7 @@
                 </section>
 
                 <section class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Our Goals</h2>
                         <p class="text-gray-600 text-base leading-relaxed mb-4">
                             At Akasa Air Virtual, our mission is to provide a realistic, engaging, and professional platform for aviation enthusiasts to explore their passion for flying. We aim to emulate the operations of Akasa Air Virtual with exceptional attention to detail, offering pilots an opportunity to experience the thrill and responsibilities of being part of a Virtual Airline.
@@ -277,7 +346,7 @@
                 </section>
 
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">A Message from our CEO</h2>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
                             <p class="text-gray-600 text-base leading-relaxed mb-4">
@@ -301,7 +370,7 @@
                 </section>
 
                 <section class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-7xl mx-auto">
+                    <div class="max-w-7xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Image Gallery</h2>
                         <div class="image-gallery flex overflow-x-auto gap-4 p-4 rounded-lg shadow-inner">
                             <img src="https://i.postimg.cc/52Nw5q4C/Screenshot-2025-08-15-22-44-02-75-df57d64958e53a4f86350d421f9936ba.jpg" alt="A screenshot of an aircraft with Akasa Air livery" class="flex-shrink-0 w-80 h-48 rounded-lg shadow-md object-cover">
@@ -316,11 +385,11 @@
             </section>
             
             <section id="about" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">About Us</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Our Journey to the Skies</h2>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-4">
                             Akasa Air Virtual was founded with a simple mission: to create a premier virtual airline experience for the Infinite Flight community. We are built on the principles of realism, professionalism, and community. From our humble beginnings, we have grown into a vibrant family of pilots who share a common passion for aviation.
@@ -333,17 +402,17 @@
             </section>
             
             <section id="staff" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">Staff</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-7xl mx-auto">
+                    <div class="max-w-7xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-4">Meet Our Team</h2>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-6 max-w-3xl mx-auto">
                             At Akasa Air Virtual, our dedicated team of staff members works tirelessly to ensure smooth operations, engaging events, and an unmatched virtual aviation experience for our pilots. From scheduling exciting routes to organizing community events, each member of our team plays a vital role in keeping our virtual airline running like clockwork.
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <a href="https://community.infiniteflight.com/u/shreyash_chauhan/summary" target="_blank" class="block">
                                     <img src="https://i.postimg.cc/5tM7tgkh/IMG-0600.png" alt="Profile picture of Shreyash_Chauhan" class="w-24 h-24 mx-auto mb-2 object-contain">
                                     <h4 class="text-lg font-semibold">Shreyash_Chauhan</h4>
@@ -351,7 +420,7 @@
                                     <p class="text-gray-600 text-sm mt-1">AKAVA001</p>
                                 </a>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <a href="https://community.infiniteflight.com/u/thehabib_gamerz/summary" target="_blank" class="block">
                                     <img src="https://i.postimg.cc/5tM7tgkh/IMG-0600.png" alt="Profile picture of TheHabib_Gamerz" class="w-24 h-24 mx-auto mb-2 object-contain">
                                     <h4 class="text-lg font-semibold">TheHabib_Gamerz</h4>
@@ -359,7 +428,7 @@
                                     <p class="text-gray-600 text-sm mt-1">AKAVA002</p>
                                 </a>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <div class="bg-gray-400 w-24 h-24 mx-auto rounded-full mb-2 flex items-center justify-center text-white">
                                     <i class="fas fa-user-plus text-3xl"></i>
                                 </div>
@@ -367,7 +436,7 @@
                                 <p class="accent-color font-medium">Chief of Flight Operations</p>
                                 <p class="text-gray-600 text-sm mt-1">AKAVA003</p>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <div class="bg-gray-400 w-24 h-24 mx-auto rounded-full mb-2 flex items-center justify-center text-white">
                                     <i class="fas fa-user-plus text-3xl"></i>
                                 </div>
@@ -375,7 +444,7 @@
                                 <p class="accent-color font-medium">Event Manager</p>
                                 <p class="text-gray-600 text-sm mt-1">AKAVA004</p>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <a href="https://community.infiniteflight.com/u/sahil/summary" target="_blank" class="block">
                                     <img src="https://i.postimg.cc/5tM7tgkh/IMG-0600.png" alt="Profile picture of SAHIL" class="w-24 h-24 mx-auto mb-2 object-contain">
                                     <h4 class="text-lg font-semibold">SAHIL</h4>
@@ -383,7 +452,7 @@
                                     <p class="text-gray-600 text-sm mt-1">AKAVA005</p>
                                 </a>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <a href="https://community.infiniteflight.com/u/b777_boii/summary" target="_blank" class="block">
                                     <img src="https://i.postimg.cc/5tM7tgkh/IMG-0600.png" alt="Profile picture of B777_Boii" class="w-24 h-24 mx-auto mb-2 object-contain">
                                     <h4 class="text-lg font-semibold">B777_Boii</h4>
@@ -391,7 +460,7 @@
                                     <p class="text-gray-600 text-sm mt-1">AKAVA006</p>
                                 </a>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <div class="bg-gray-400 w-24 h-24 mx-auto rounded-full mb-2 flex items-center justify-center text-white">
                                     <i class="fas fa-user-plus text-3xl"></i>
                                 </div>
@@ -399,7 +468,7 @@
                                 <p class="accent-color font-medium">PIREP Manager</p>
                                 <p class="text-gray-600 text-sm mt-1">AKAVA007</p>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg text-center hover-effect">
                                 <div class="bg-gray-400 w-24 h-24 mx-auto rounded-full mb-2 flex items-center justify-center text-white">
                                     <i class="fas fa-user-plus text-3xl"></i>
                                 </div>
@@ -413,18 +482,18 @@
             </section>
 
             <section id="ranks" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">Ranks</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-4">Our Pilot Ranks</h2>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-10">
                             Progress through your virtual career with Akasa Air Virtual. Each rank represents a new milestone in skill and dedication.
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/s2FMNjjr/Oferta-20250719-203903-0000.jpg" alt="Trainee Pilot Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Trainee Pilot</h3>
                                 <p class="text-xs accent-color font-medium mb-1">0 - 5 HOURS</p>
@@ -432,7 +501,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: B738, A320, A220, B38M</p>
                             </div>
                             
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/8C0N0wBr/Oferta-20250719-204143-0000.jpg" alt="Second Officer Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Second Officer</h3>
                                 <p class="text-xs accent-color font-medium mb-1">5 - 20 HOURS</p>
@@ -440,7 +509,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: A321</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/Qx3swF5S/Oferta-20250719-204255-0000.jpg" alt="First Officer Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">First Officer</h3>
                                 <p class="text-xs accent-color font-medium mb-1">20 - 50 HOURS</p>
@@ -448,7 +517,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: A333, A339</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/XJ5SDWYT/Oferta-20250719-204740-0000.jpg" alt="Senior First Officer Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Senior First Officer</h3>
                                 <p class="text-xs accent-color font-medium mb-1">50 - 100 HOURS</p>
@@ -456,7 +525,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: B77L, B77W</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/N0WZXnkb/Oferta-20250719-204909-0000.jpg" alt="Captain Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Captain</h3>
                                 <p class="text-xs accent-color font-medium mb-1">100 - 150 HOURS</p>
@@ -464,7 +533,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: B744, B742</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/XJSDqCnz/Oferta-20250719-205436-0000.jpg" alt="Senior Captain Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Senior Captain</h3>
                                 <p class="text-xs accent-color font-medium mb-1">150 - 200 HOURS</p>
@@ -472,7 +541,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: C17, C350, KC10</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/BnPgFn79/Oferta-20250719-205545-0000.jpg" alt="Chief Pilot Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Chief Pilot</h3>
                                 <p class="text-xs accent-color font-medium mb-1">200 - 250 HOURS</p>
@@ -480,7 +549,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: AN225</p>
                             </div>
                             
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/5yHHr6Cf/Oferta-20250719-210215-0000.jpg" alt="Akasa Air Warrior Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Akasa Air Warrior</h3>
                                 <p class="text-xs accent-color font-medium mb-1">250 - 300 HOURS</p>
@@ -488,7 +557,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: All remaining aircraft</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/L4qBwXRq/Oferta-20250719-210353-0000.jpg" alt="Orange Falcon Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Orange Falcon</h3>
                                 <p class="text-xs accent-color font-medium mb-1">300 - 400 HOURS</p>
@@ -496,7 +565,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Aircrafts: All remaining aircraft</p>
                             </div>
 
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg flex flex-col items-center text-center hover-effect">
                                 <img src="https://i.postimg.cc/NGrmbz7m/Oferta-20250719-210522-0000.jpg" alt="Orange Wing Rookie Badge" class="w-20 h-20 object-contain mb-2">
                                 <h3 class="text-lg font-semibold text-gray-800">Orange Wing Rookie</h3>
                                 <p class="text-xs accent-color font-medium mb-1">400+ HOURS</p>
@@ -509,11 +578,11 @@
             </section>
 
             <section id="fleet" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">Our Fleet</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-4">Operational Fleet</h2>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-6">
                             Modern. Efficient. Reliable.
@@ -544,12 +613,12 @@
             </section>
             
             <section id="hubs" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">Main HUBS</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto space-y-12">
-                        <div>
+                    <div class="max-w-5xl mx-auto space-y-12 fade-in-up">
+                        <div class="hover-effect">
                             <h2 class="text-2xl font-bold accent-color mb-3 text-center">Kempegowda International Airport <br>(BLR)/(VOBL)</h2>
                             <div class="md:flex items-center space-y-4 md:space-y-0 md:space-x-8">
                                 <div class="md:w-1/2">
@@ -563,7 +632,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="hover-effect">
                             <h2 class="text-2xl font-bold accent-color mb-3 text-center">Chhatrapati Shivaji Maharaj International Airport <br>(BOM)/(VABB)</h2>
                             <div class="md:flex items-center space-y-4 md:space-y-0 md:space-x-8 flex-row-reverse">
                                 <div class="md:w-1/2">
@@ -583,23 +652,23 @@
             <section id="routes" class="page-content">
                 <div class="relative bg-cover bg-center h-[30vh] md:h-[40vh] flex items-center justify-center text-white" style="background-image: url('https://placehold.co/1920x1080/0d001b/ffffff?text=Routes+Background');">
                     <div class="absolute inset-0 bg-black opacity-50"></div>
-                    <h1 class="relative text-3xl md:text-6xl font-extrabold tracking-tight text-center">Routes</h1>
+                    <h1 class="relative text-3xl md:text-6xl font-extrabold tracking-tight text-center main-title">Routes</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-7xl mx-auto">
+                    <div class="max-w-7xl mx-auto fade-in-up">
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Domestic Routes</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                            <div class="text-center">
+                            <div class="text-center hover-effect">
                                 <img src="https://i.postimg.cc/NFFbMVsG/IMG-0630.webp" alt="Bengaluru city" class="w-full h-auto rounded-lg shadow-lg mb-3">
                                 <h3 class="text-lg font-semibold text-gray-800">BENGALURU</h3>
                                 <p class="text-gray-600 text-sm mt-1">Bengaluru serves as the main hub for Akasa Air Virtual, connecting pilots to numerous domestic and international routes.</p>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center hover-effect">
                                 <img src="https://i.postimg.cc/6q35g6M6/IMG-0629.webp" alt="Mumbai city" class="w-full h-auto rounded-lg shadow-lg mb-3">
                                 <h3 class="text-lg font-semibold text-gray-800">MUMBAI</h3>
                                 <p class="text-gray-600 text-sm mt-1">Mumbai our second hub is a major city in our network, offering a wide range of domestic routes.</p>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center hover-effect">
                                 <img src="https://i.postimg.cc/tTJpqqxs/IMG-0631.jpg" alt="Delhi city" class="w-full h-auto rounded-lg shadow-lg mb-3">
                                 <h3 class="text-lg font-semibold text-gray-800">DELHI</h3>
                                 <p class="text-gray-600 text-sm mt-1">Delhi serves as a strategic hub, offering connections to both domestic and international destinations.</p>
@@ -608,12 +677,12 @@
 
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">International Routes</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                            <div class="text-center">
+                            <div class="text-center hover-effect">
                                 <img src="https://i.postimg.cc/XYgrXvpL/IMG-0632.jpg" alt="Abu Dhabi city" class="w-full h-auto rounded-lg shadow-lg mb-3">
                                 <h3 class="text-lg font-semibold text-gray-800">ABU DHABI</h3>
                                 <p class="text-gray-600 text-sm mt-1">Abu Dhabi is an important destination in our international network, offering seamless connections to the Middle East and beyond.</p>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center hover-effect">
                                 <img src="https://i.postimg.cc/8PR5nCBG/IMG-0633.jpg" alt="Kuwait city" class="w-full h-auto rounded-lg shadow-lg mb-3">
                                 <h3 class="text-lg font-semibold text-gray-800">KUWAIT</h3>
                                 <p class="text-gray-600 text-sm mt-1">Kuwait is a key international destination in our network, offering easy access to the Middle East and surrounding regions.</p>
@@ -622,7 +691,7 @@
 
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Route Map</h2>
                         <div class="flex justify-center mb-6">
-                            <img src="https://i.postimg.cc/mD9t4hwj/photo-output.jpg" alt="Akasa Air Virtual route map" class="w-full max-w-full h-auto rounded-lg shadow-lg">
+                            <img src="https://i.postimg.cc/mD9t4hwj/photo-output.jpg" alt="Akasa Air Virtual route map" class="w-full max-w-full h-auto rounded-lg shadow-lg hover-effect">
                         </div>
 
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Routes Database</h2>
@@ -645,11 +714,11 @@
             </section>
             
             <section id="apply" class="page-content">
-                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gray-200 py-12 px-4 sm:px-6 lg:px-8 text-center fade-in-up">
                     <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4">Apply Now</h1>
                 </div>
                 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-5xl mx-auto">
+                    <div class="max-w-5xl mx-auto fade-in-up">
                         <h2 class="text-2xl font-bold accent-color mb-6 text-center">Join Akasa Air Virtual</h2>
                         <p class="text-gray-600 text-base leading-relaxed text-center mb-4">
                             Welcome to Akasa Air Virtual! We're thrilled that you're interested in joining our growing family of aviation enthusiasts. At Akasa Air Virtual, we strive to provide a realistic, professional, and fun environment for pilots of all skill levels. Here's why you should join us:
