@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang="en"><head>
+I have updated the staff page with the new information you provided. The CEO is now Shreyash_Chauhan and the COO is TheHabib_Gamerz, with the other staff positions also updated. I've also replaced the placeholder staff images with the new logo and the title of the staff member.
+Additionally, I've updated the logo image across the entire website to the one you provided.
+Here is the updated HTML code for your website:
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akasa Air Virtual</title>
@@ -47,7 +52,9 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
-    </style></head><body>
+    </style>
+</head>
+<body>
 
     <div class="min-h-screen bg-gray-100">
 
@@ -413,4 +420,318 @@
                         <div class="text-center">
                             <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Abu+Dhabi" alt="Abu Dhabi" class="w-full h-auto rounded-lg shadow-lg mb-4">
                             <h3 class="text-xl font-semibold text-gray-800">ABU DHABI</h3>
-                            <p
+                            <p class="text-gray-600 mt-2">Abu Dhabi is an important destination in our international network, offering seamless connections to the Middle East and beyond.</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Kuwait" alt="Kuwait" class="w-full h-auto rounded-lg shadow-lg mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">KUWAIT</h3>
+                            <p class="text-gray-600 mt-2">Kuwait is a key international destination in our network, offering easy access to the Middle East and surrounding regions.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Route Map</h2>
+                    <div class="flex justify-center mb-8">
+                        <img src="https://placehold.co/1000x600/e2e8f0/64748b?text=Route+Map" alt="Route Map" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Routes Database</h2>
+                    <div class="overflow-x-auto rounded-lg shadow-lg">
+                        <table class="min-w-full bg-white text-sm">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="px-4 py-2 text-left text-gray-700">Flight Number</th>
+                                    <th class="px-4 py-2 text-left text-gray-700">Departure</th>
+                                    <th class="px-4 py-2 text-left text-gray-700">Arrival</th>
+                                    <th class="px-4 py-2 text-left text-gray-700">Flight Time (in Hrs)</th>
+                                    <th class="px-4 py-2 text-left text-gray-700">Aircraft</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-t border-gray-200">
+                                    <td class="px-4 py-2">AKJ571</td>
+                                    <td class="px-4 py-2">VABB</td>
+                                    <td class="px-4 py-2">OKKK</td>
+                                    <td class="px-4 py-2">04:47</td>
+                                    <td class="px-4 py-2">B38M</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-t border-gray-200">
+                                    <td class="px-4 py-2">AKJ1891</td>
+                                    <td class="px-4 py-2">VABB</td>
+                                    <td class="px-4 py-2">VISR</td>
+                                    <td class="px-4 py-2">02:55</td>
+                                    <td class="px-4 py-2">B38M</td>
+                                </tr>
+                                <tr class="border-t border-gray-200">
+                                    <td class="px-4 py-2">AKJ1527</td>
+                                    <td class="px-4 py-2">VOBL</td>
+                                    <td class="px-4 py-2">VEGT</td>
+                                    <td class="px-4 py-2">02:35</td>
+                                    <td class="px-4 py-2">B38M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-12 bg-gray-100 p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">✨ Find Flight Information</h3>
+                        <p class="text-gray-600 mb-6">
+                            Enter a departure and arrival airport ICAO code to get more details about a potential flight route.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <input type="text" id="departure-input" placeholder="Departure ICAO (e.g., VOBL)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <input type="text" id="arrival-input" placeholder="Arrival ICAO (e.g., VABB)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <button id="get-flight-btn" class="w-full sm:w-auto px-6 py-3 bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out">
+                                ✨ Get Flight Info
+                            </button>
+                        </div>
+                        <div id="flight-info-output" class="mt-6 text-left p-4 bg-white rounded-lg shadow-inner hidden">
+                            <p id="flight-info-text" class="text-gray-800 whitespace-pre-wrap"></p>
+                            <div id="loading-spinner" class="hidden text-center">
+                                <i class="fas fa-spinner fa-spin text-orange-600 text-3xl"></i>
+                                <p class="text-gray-500 mt-2">Generating flight details...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <main id="apply" class="page-content">
+            <div class="bg-gray-200 py-16 px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">Apply Now</h1>
+            </div>
+            <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="text-3xl font-bold text-orange-800 mb-8 text-center">Join Akasa Air Virtual</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed text-center mb-6">
+                        Welcome to Akasa Air Virtual! We're thrilled that you're interested in joining our growing family of aviation enthusiasts. At Akasa Air Virtual, we strive to provide a realistic, professional, and fun environment for pilots of all skill levels. Here's why you should join us:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+                        <li><span class="font-bold">Realistic Operations:</span> Experience authentic flight schedules and routes tailored for realism.</li>
+                        <li><span class="font-bold">Supportive Community:</span> Connect with like-minded aviation enthusiasts through our active Discord server.</li>
+                        <li><span class="font-bold">Career Growth:</span> Earn promotions, achieve milestones, and build your virtual flying career.</li>
+                        <li><span class="font-bold">Exclusive Events:</span> Participate in exciting weekly group flights and events.</li>
+                    </ul>
+                    
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">How to Join</h3>
+                        <ol class="list-decimal list-inside space-y-4 text-gray-600 text-lg">
+                            <li><span class="font-semibold">Requirements:</span>
+                                <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                                    <li>You must have an Infinite Flight Pro Subscription.</li>
+                                    <li>You must be at least Grade 3.</li>
+                                    <li>You must have an active IFC account that is in good standing.</li>
+                                    <li>You must be at least 13 years old or above.</li>
+                                    <li>You must not be on the IFVARB Blacklist or Watchlist.</li>
+                                    <li>You must obtain at least 80% for the written test.</li>
+                                    <li>You must be able to log one flight a month.</li>
+                                </ul>
+                            </li>
+                            <li class="mt-4"><span class="font-semibold">Application Process:</span>
+                                <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                                    <li>Complete our Application Form.</li>
+                                    <li>Join our Discord server once your application is approved.</li>
+                                </ul>
+                            </li>
+                            <li class="mt-4"><span class="font-semibold">After Approval:</span>
+                                <p class="ml-6 mt-2">
+                                    With approval, you'll receive access to our Crew Center, pilot handbook, and other resources to get started on your journey.
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeN-cKmnrnuSMGaiJXCxESG4gVsOTc91XVL2EwXVF1HWBWlWw/viewform?usp=send_form" target="_blank" class="inline-block px-8 py-4 bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out transform hover:scale-105">
+                            Click to Fill out the Application Form
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 flex flex-col items-center md:items-start">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://i.postimg.cc/5tM7tgkh/IMG-0600.png" alt="Akasa Air Logo" class="h-8">
+                        <span class="text-xl font-bold text-white">Akasa Air Virtual</span>
+                    </div>
+                    <p class="text-sm">&copy; Akasa Air Virtual 2025</p>
+                </div>
+                
+                <div class="col-span-1 text-center md:text-left">
+                    <h4 class="font-semibold text-white mb-4">Akasa Air Virtual</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'staff')">Staff</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'fleet')">Fleet</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'hubs')">Main HUBs</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'routes')">Routes</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'ranks')">Ranks</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'apply')">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 text-center md:text-left">
+                    <h4 class="font-semibold text-white mb-4">Infinite Flight Community</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://community.infiniteflight.com/u/akasa_air_virtual/summary" target="_blank" class="hover:text-white">IFC Account</a></li>
+                        <li><a href="https://community.infiniteflight.com/t/akasa-air-virtual-its-your-sky-official-thread-2025-2026/986856?u=b777_boii" target="_blank" class="hover:text-white">IFC Thread</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 text-center md:text-left">
+                    <p class="text-sm leading-relaxed">
+                        Akasa Air Virtual is an independent Virtual Airline created for simulation purposes only within <span class="font-semibold text-white">Infinite Flight</span>. We are in no way affiliated with or endorsed by the real Akasa Air or its partners.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <div id="message-box" class="message-box"></div>
+    </div>
+
+    <script>
+        // JavaScript for page navigation and mobile menu
+        const pages = ['home', 'staff', 'ranks', 'fleet', 'hubs', 'routes', 'apply'];
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const getFlightBtn = document.getElementById('get-flight-btn');
+        const departureInput = document.getElementById('departure-input');
+        const arrivalInput = document.getElementById('arrival-input');
+        const flightInfoOutput = document.getElementById('flight-info-output');
+        const flightInfoText = document.getElementById('flight-info-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const messageBox = document.getElementById('message-box');
+
+        function showPage(event, pageId) {
+            // Prevent the default link behavior (page reload)
+            event.preventDefault();
+
+            pages.forEach(id => {
+                const page = document.getElementById(id);
+                if (page) {
+                    page.style.display = (id === pageId) ? 'block' : 'none';
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show the home page on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage({ preventDefault: () => {} }, 'home');
+
+            // Initialize dropdown toggles
+            document.querySelectorAll('[data-dropdown-toggle]').forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    const dropdownId = toggle.dataset.dropdownToggle;
+                    const dropdownMenu = document.getElementById(dropdownId + "-menu");
+
+                    if (!dropdownMenu) return;
+
+                    // Close all other dropdowns
+                    document.querySelectorAll('[id$="-menu"]').forEach(menu => {
+                        if (menu !== dropdownMenu) {
+                            menu.classList.add('hidden');
+                        }
+                    });
+
+                    // Toggle the current one
+                    dropdownMenu.classList.toggle('hidden');
+                    e.stopPropagation(); // Prevent the click from bubbling up and closing the menu
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                document.querySelectorAll('[id$="-menu"]').forEach(menu => {
+                    if (!menu.classList.contains('hidden') && !e.target.closest('[data-dropdown-toggle]')) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        }
+
+        // Gemini API integration for flight info
+        async function getFlightInfo() {
+            const departure = departureInput.value.trim().toUpperCase();
+            const arrival = arrivalInput.value.trim().toUpperCase();
+
+            if (!departure || !arrival) {
+                showMessage("Please enter both departure and arrival ICAO codes.", "bg-red-500");
+                return;
+            }
+
+            loadingSpinner.classList.remove('hidden');
+            flightInfoOutput.classList.add('hidden');
+            
+            try {
+                const systemPrompt = "You are an expert flight planner for a virtual airline. Provide realistic and detailed flight information. Respond in a single, well-structured paragraph. Do not mention that you are an AI or a language model. Your response should include a realistic flight number (e.g., AKJ123), the aircraft type, an approximate flight time, and a brief, descriptive summary of the route.";
+                const userQuery = `Generate flight details for a route from ${departure} to ${arrival}.`;
+                const apiKey = ""
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    flightInfoText.textContent = text;
+                    flightInfoOutput.classList.remove('hidden');
+                } else {
+                    throw new Error("No text found in API response.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching flight info:", error);
+                showMessage("Failed to retrieve flight information. Please try again.", "bg-red-500");
+                flightInfoText.textContent = "Error: Could not retrieve flight information. Please check your internet connection or try a different route.";
+                flightInfoOutput.classList.remove('hidden');
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+        
+        getFlightBtn.addEventListener('click', getFlightInfo);
+
+        // Custom message box function
+        function showMessage(message, colorClass) {
+            messageBox.textContent = message;
+            messageBox.className = `message-box ${colorClass} text-white show`;
+            messageBox.style.opacity = 1;
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+
