@@ -58,6 +58,71 @@
             transition: opacity 0.5s ease-in-out;
         }
 
+        /* Custom styles for the search bar and table */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .search-container input[type="text"] {
+            padding: 12px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            color: #1f2937;
+        }
+        .search-container input[type="text"]:focus {
+            border-color: #ea580c;
+            outline: none;
+        }
+        .search-container button {
+            padding: 12px 25px;
+            background-color: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .search-container button:hover {
+            background-color: #c0420b;
+        }
+        .results-container {
+            margin-top: 20px;
+        }
+        .flight-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .flight-table th, .flight-table td {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            text-align: left;
+        }
+        .flight-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .flight-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .flight-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-results {
+            text-align: center;
+            color: #d9534f;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
         /* Mobile-specific optimizations */
         @media (max-width: 768px) {
             .mobile-only-card {
@@ -66,6 +131,37 @@
             .desktop-only-table {
                 display: none;
             }
+            .flight-table, .flight-table thead, .flight-table tbody, .flight-table th, .flight-table td, .flight-table tr { 
+                display: block; 
+            }
+            .flight-table thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .flight-table tr { border: 1px solid #ccc; margin-bottom: 10px; }
+            .flight-table td { 
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            .flight-table td:before {
+                position: absolute;
+                top: 0;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            td:nth-of-type(1):before { content: "Flight Number"; }
+            td:nth-of-type(2):before { content: "Departure"; }
+            td:nth-of-type(3):before { content: "Arrival"; }
+            td:nth-of-type(4):before { content: "Flight Time"; }
+            td:nth-of-type(5):before { content: "Aircraft"; }
         }
         @media (min-width: 769px) {
             .mobile-only-card {
@@ -230,7 +326,7 @@
                             Akasa Air Virtual was founded with a simple mission: to create a premier virtual airline experience for the Infinite Flight community. We are built on the principles of realism, professionalism, and community. From our humble beginnings, we have grown into a vibrant family of pilots who share a common passion for aviation.
                         </p>
                         <p class="text-gray-600 text-base leading-relaxed text-center">
-                            Our dedication to accurate flight operations, a diverse route network, and a supportive environment sets us apart. We believe that virtual aviation is more than just a hobby—it's an opportunity to learn, connect, and grow. Join us as we continue to write our story in the virtual skies.
+                            Our dedication to accurate flight operations, a diverse route network, and a supportive environment sets us apart. We believe that virtual aviation is more than just a hobbyâit's an opportunity to learn, connect, and grow. Join us as we continue to write our story in the virtual skies.
                         </p>
                     </div>
                 </section>
@@ -531,62 +627,12 @@
 
                         <h2 class="text-2xl sm:text-4xl font-bold text-center accent-color mb-6">Routes Database</h2>
                         
-                        <div class="mobile-only-card space-y-4">
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-                                <p class="text-sm font-semibold accent-color">Flight Number: <span class="text-gray-800">AKJ571</span></p>
-                                <p class="text-sm font-semibold accent-color">Route: <span class="text-gray-800">VABB to OKKK</span></p>
-                                <p class="text-sm font-semibold accent-color">Flight Time: <span class="text-gray-800">04:47</span></p>
-                                <p class="text-sm font-semibold accent-color">Aircraft: <span class="text-gray-800">B38M</span></p>
-                            </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-                                <p class="text-sm font-semibold accent-color">Flight Number: <span class="text-gray-800">AKJ1891</span></p>
-                                <p class="text-sm font-semibold accent-color">Route: <span class="text-gray-800">VABB to VISR</span></p>
-                                <p class="text-sm font-semibold accent-color">Flight Time: <span class="text-gray-800">02:55</span></p>
-                                <p class="text-sm font-semibold accent-color">Aircraft: <span class="text-gray-800">B38M</span></p>
-                            </div>
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
-                                <p class="text-sm font-semibold accent-color">Flight Number: <span class="text-gray-800">AKJ1527</span></p>
-                                <p class="text-sm font-semibold accent-color">Route: <span class="text-gray-800">VOBL to VEGT</span></p>
-                                <p class="text-sm font-semibold accent-color">Flight Time: <span class="text-gray-800">02:35</span></p>
-                                <p class="text-sm font-semibold accent-color">Aircraft: <span class="text-gray-800">B38M</span></p>
-                            </div>
+                        <div class="search-container">
+                            <input type="text" id="searchInput" placeholder="Search by flight number, airline, or airport code...">
+                            <button id="searchButton">Search</button>
                         </div>
-
-                        <div class="overflow-x-auto rounded-lg shadow-lg desktop-only-table">
-                            <table class="min-w-full bg-white text-sm">
-                                <thead>
-                                    <tr class="bg-gray-200">
-                                        <th class="px-4 py-2 text-left text-gray-700">Flight Number</th>
-                                        <th class="px-4 py-2 text-left text-gray-700">Departure</th>
-                                        <th class="px-4 py-2 text-left text-gray-700">Arrival</th>
-                                        <th class="px-4 py-2 text-left text-gray-700">Flight Time (in Hrs)</th>
-                                        <th class="px-4 py-2 text-left text-gray-700">Aircraft</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-t border-gray-200">
-                                        <td class="px-4 py-2">AKJ571</td>
-                                        <td class="px-4 py-2">VABB</td>
-                                        <td class="px-4 py-2">OKKK</td>
-                                        <td class="px-4 py-2">04:47</td>
-                                        <td class="px-4 py-2">B38M</td>
-                                    </tr>
-                                    <tr class="bg-gray-50 border-t border-gray-200">
-                                        <td class="px-4 py-2">AKJ1891</td>
-                                        <td class="px-4 py-2">VABB</td>
-                                        <td class="px-4 py-2">VISR</td>
-                                        <td class="px-4 py-2">02:55</td>
-                                        <td class="px-4 py-2">B38M</td>
-                                    </tr>
-                                    <tr class="border-t border-gray-200">
-                                        <td class="px-4 py-2">AKJ1527</td>
-                                        <td class="px-4 py-2">VOBL</td>
-                                        <td class="px-4 py-2">VEGT</td>
-                                        <td class="px-4 py-2">02:35</td>
-                                        <td class="px-4 py-2">B38M</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div id="resultsContainer" class="results-container">
+                            <p style="text-align: center; color: #6b7280;">Enter your search query above to find flight routes.</p>
                         </div>
                         
                         <div class="mt-6 text-center">
@@ -772,6 +818,453 @@
             mobileMenu.classList.add('hidden');
             mobileMenuBtn.querySelector('i').classList.remove('fa-times');
             mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------------------------
+        // New JavaScript for Route Search
+        // -----------------------------------------------------------------------------------------------------------------------------------
+
+        const allRoutesData = `
+            AKJ571 VABB OKKK 04:47 B38M AKJ572 OKKK VABB 04:00 B38M
+            AKJ1891 VABB VISR 02:55 B38M AKJ1892 VISR VABB 02:30 B38M
+            AKJ165E VIDP VOGO 02:40 B38M - - - -
+            AKJ1527 VOBL VILK 02:55 B38M AKJ1404 VILK VOBL 02:30 B38M
+            AKJ1925 VAAH VECC 02:12 B38M AKJ1926 VECC VAAH 02:20 B38M
+            AKJ1925 VECC VOPB 02:15 B38M AKJ1926 VOPB VECC 02:15 B38M
+            AKJ1372 VOBL VEGT 02:45 B38M AKJ1135 VEGT VOBL 03:00 B38M
+            AKJ1451 VABB VILK 02:00 B38M AKJ1525 VILK VABB 02:00 B38M
+            AKJ1821 VOBL VEAY 02:35 B38M AKJ1822 VEAY VOBL 02:47 B38M
+            AKJ1491 VABB VEBN 02:00 B38M AKJ1497 VEBN VABB 02:10 B38M
+            AKJ1518 VABB VOCL 01:50 B38M AKJ1519 VOCL VABB 01:50 B38M
+            AKJ1325 VOBL VAAH 02:20 B38M AKJ1332 VAAH VOBL 02:11 B38M
+            AKJ1738 VABB VOBL 01:46 B38M AKJ1887 VOBL VABB 02:00 B38M
+            AKJ1781 VABB VAAH 01:20 B38M AKJ1324 VAAH VABB 01:05 B38M
+            AKJ1323 VEGT VEAT 00:45 B38M AKJ1324 VEAT VEGT 00:40 B38M
+            AKJ1359 VOBL VIDP 02:45 B38M AKJ1380 VIDP VOBL 03:05 B38M
+            AKJ1438 VOBL VOHS 01:15 B38M AKJ1439 VOHS VOBL 00:55 B38M
+            AKJ1633 VOHS VEBN 01:35 B38M AKJ1634 VEBN VOHS 01:45 B38M
+            AKJ1491 VABB VEBN 02:00 B38M AKJ1497 VEBN VABB 02:10 B38M
+            AKJ1134 VOBL VEGK 02:55 B38M AKJ1883 VEGK VOBL 02:50 B38M
+            AKJ1342 VAAH VIDP 01:42 B38M AKJ1146 VIDP VAAH 01:35 B38M
+            AKJ1503 VABB VEGT 02:59 B38M AKJ1504 VEGT VABB 03:28 B38M
+            AKJ584 VABB OMAA 02:15 B38M AKJ585 OMAA VABB 02:30 B38M
+            AKJ1850 VOBL VEBD 02:55 B38M AKJ1851 VEBD VOBL 04:25 B38M
+            AKJ70 VABB OTHH 03:45 B38M AKJ71 OTHH VABB 02:59 B38M
+            AKJ597 VABB OERK 04:20 B38M AKJ568 OERK VABB 04:00 B38M
+            AKJ559 VABB OEJN 05:10 B38M AKJ562 OEJN VABB 05:10 B38M
+            AKJ1880 VEGK VIDP 01:05 B38M AKJ1883 VIDP VEGK 01:35 B38M
+            AKJ1561 VOBL VECC 02:25 B38M AKJ1541 VECC VOBL 02:25 B38M
+            AKJ1607 VAPO VIDP 02:05 B38M AKJ1608 VIDP VAPO 02:10 B38M
+            AKJ1903 VABB VEBD 02:19 B38M AKJ1386 VEBD VABB 02:50 B38M
+            AKJ190C VAAH VEBD 01:54 B38M AKJ1904 VEBD VAAH 02:56 B38M
+            AKJ1120 VABB VIDP 02:15 B38M AKJ1411 VIDP VABB 02:25 B38M
+            AKJ1311 VOBL VAPO 01:20 B38M AKJ1312 VAPO VOBL 01:20 B38M
+            AKJ1172 VABB VECC 02:35 B38M AKJ1173 VECC VABB 02:40 B38M
+            AKJ1405 VOHS VIDP 02:00 B38M AKJ1406 VIDP VOHS 02:00 B38M
+            AKJ578 VOBL OMAA 04:00 B38M AKJ577 OMAA VOBL 04:00 B38M
+            AKJ580 VAAH OMAA 03:30 B38M AKJ579 OMAA VAAH 03:30 B38M
+            AKJ1304 VABB VOPB via VOMM 04:55 B38M AKJ1305 VOPB VABB via VOMM 05:05 B38M
+            AKJ 1509 VAPO VAAH 01:30 B38M AKJ 1510 VAAH VAPO 01:35 B38M
+            AKJ1563 VAPO VECC 03:00 B38M AKJ1562 VECC VAPO 02:30 B38M
+            AKJ 1572 VOBL VEBS 02:10 B38M AKJ1384 VEBS VOBL 02:00 B38M
+            AKJ1404 VOMM VOPB 02:00 B38M AKJ1305 VOPB VOMM 01:50 B38M
+
+            PR118 RPLL CYYZ 11:15 A350-900 PR119 CYYZ RPLL 13:15 A350-900
+            PR126 RPLL KJFK 14:55 A350-900 PR127 KJFK RPLL 16:30 A350-900
+            PR100 RPLL PHNL 10:00 A330-300 PR101 PHNL RPLL 10:30 A330-300
+            PR112 RPLL KLAX 12:25 B777-300ER PR113 KLAX RPLL 14:10 B777-300ER
+            PR124 RPLL KSEA 11:15 B777-300ER PR125 KSEA RPLL 13:15 B777-300ER
+            PR427 RJAA RPLL 04:15 A321-200/A330-300 PR428 RPLL RJAA 03:50 A321-200/A330-300
+            PR300 RPLL VHHH 01:40 A321-200/A330-300 PR301 VHHH RPLL 01:50 A321-200/A330-300
+            PR445 PRVM RKPC 04:50 A321-200 PR446 RKPC PRVM 05:00 A321-200
+            PR501 RPLL WSSS 03:10 A321-200 PR502 WSSS RPLL 03:35 A321-200
+            PR223 RPLL YPPH 06:40 A321-200 PR224 YPPH RPLL 06:40 A321-200
+
+            VN 8 VVNB LFPG 11:00 A350-900 VN 18 LFPG VVNB 11:00 A350-900
+            VN 11 VVTS LFPG 11:10 B787-9, A350-900 VN 10 LFPG VVTS 11:10 B787-9, A350-900
+            VN 31 VVTS EDDF 12:00 B787-9, A350-900 VN 30 EDDF VVTS 12:00 B787-9, A350-900
+            VN 37 VVNB EDDF 11:30 B787-9, A350-900 VN 36 EDDF VVNB 11:30 B787-9, A350-900
+            VN 51 VVTS EGLL 11:00 B787-9 VN 50 EGLL VVTS 12:00 B787-9
+            VN 98 VVTS KSFO 14:00 A350-900 VN 99 KSFO VVTS 15:00 A350-900
+            VN 72H VVNB LIMC 11:00 A350-900 VN 71H LIMC VVNB 11:00 A350-900
+            VN 148 VVTS VVDN 01:00 A321 VN 147 VVDN VVTS 01:00 A321
+            VN 310 VVNB RJAA 04:00 B787-9, A350-900, B787-10 VN 311 RJAA VVNB 04:00 B787-9, A350-900, B787-10
+            VN 348 VVNB RJGG 05:45 A321, A350-900 VN 349 RJGG VVNB 05:45 A321, A350-900
+            VN 356 VVNB RJFF 05:00 A321 VN 357 RJFF VVNB 05:00 A321
+            VN 408 VVTS RKSI 04:20 A321, A350-900, B787-10 VN 409 RKSI VVTS 04:20 A321, A350-900, B787-10
+            VN 441 RKSI VVCR 04:20 A321 VN 440 VVCR RKSI 04:00 A321
+            VN 506 VVNB ZGGG 02:10 A321 VN 507 ZGGG VVNB 02:10 A321
+            VN 522 VVTS ZSPD 04:30 A321, B787-9, A350-900 VN 523 ZSPD VVTS 04:00 A321, B787-9, A350-900
+            VN 570 VVTS RCTP 03:40 A321 VN 571 RCTP VVTS 04:00 A321
+            VN 592 VVNB VHHH 02:10 A321 VN 593 VHHH VVNB 02:10 A321
+            VN 631 VVTS WIII 01:30 A321 VN 632 WIII VVTS 01:45 A321
+            VN 791 VVTS YPPH 06:25 B787-9, A350-900, B787-10 VN 790 YPPH VVTS 06:30 B787-9, A350-900, B787-10
+            VN 971 VVNB VIDP 04:00 A321, B787-9, A350-900 VN 970 VIDP VVNB 04:00 A321, B787-9, A350-900
+
+            MH 376 WMKK ZGGG 04:30 A333 MH 388 WMKK ZSPD 05:30 A333 / B738 MH 390 WMKK ZSAM 04:30 B738 MH 73 WMKK VHHH 04:00 A333 / B738 MH 208 WMKK VAAH 05:30 B738 MH 180 WMKK VOMM 03:55 B38M / B738 MH 198 WMKK VOHS 04:25 B38M / B738 MH 190 WMKK VIDP 05:30 A333 / B38M MH 750 WMKK VVTS 02:00 B738 MH 603 WMKK WSSS 01:20 B738/ B38M MH 88 WMKK RJAA 06:40 A333 / A359 MH 36 WMKK RJTT 06:50 A333 MH 160 WMKK FAOR 10:00 A333 / A359
+            MH 377 ZGGG WMKK 04:30 A333
+            MH 389 ZSPD WMKK 05:30 A333 / B738
+            MH 391 ZSAM WMKK 04:30 B738
+            MH 73 VHHH WMKK 04:00 A333 / B738
+            MH 209 VAAH WMKK 05:30 B738
+            MH 181 VOMM WMKK 03:55 B38M / B738
+            MH 199 VOHS WMKK 04:25 B38M / B738
+            MH 191 VIDP WMKK 05:30 A333 / B38M
+            MH 751 VVTS WMKK 02:00 B738
+            MH 602 WSSS WMKK 01:20 B738/ B38M
+            MH 71 RJAA WMKK 06:40 A333 / A359
+            MH 37 RJTT WMKK 06:50 A333
+            MH 160 FAOR WMKK 10:30 A333 / A359
+            MH 164 WMKK OTHH 07:00 A333/A359 MH165 OTHH WMKK 06:50 A333/A359
+            MH 156 WMKK OEJN 08:50 A333/A380 MH157 OEJN WMKK 08:30 A333/A380
+
+            KE075 RKSI CYYC 09:30 B789 KE076 CYYC RKSI 12:20 B789
+            KE913 RKSI LEMD 13:35 B789/B77W KE914 LEMD RKSI 12:00 B789/B77W
+            KE921 RKSI LPPT 15:15 B789 KE922 LPPT RKSI 13:10 B789
+            KE1098 RKSI OMDB 09:20 B77F KE1090 OMDB RKSI 07:45 B77F
+            KE1101 RKSI KSFO 09:30 B77F KE1124 KSFO RKSI 11:30 B77F
+            KE1095 RKSI YBBN 08:50 B77F KE1099 YBBN RKSI 09:20 B77F
+            KE1143 RKSI LFPG 13:15 B77F KE1126 LFPG RKSI 11:35 B77F
+            KE497 RKSI VIDP 06:45 B789 KE498 VIDP RKSI 06:45 B789
+            KE937 RKSI LOWW 12:00 B77W KE938 LOWW RKSI 10:15 B77W
+            KE1113 RKSI NZAA 10:50 B77F KE1120 NZAA RKSI 11:15 B77F
+            OZ101 RJAA RKSI 02:35 A321/A350/A380/B744 OZ102 RKSI RJAA 02:20 A321/A350/A380/B744
+            LJ915 RKSI PGUM 04:15 B738 LJ916 PGUM RKSI 04:35 B738
+            BX601* WADD RKPK 06:40 A320 BX602 RKPK WADD 07:00 A320
+            OZ722 VHHH RKSI 03:00 A220/B789/B78X/A380 OZ721 RKSI VVHH 03:00 A220, B789, B78X, A380
+            OZ712 RCTP RKSI 02:20 A321/A350/A380/B744 OZ711 RKSI RCTP 02:55 A321, A350, A380, B744
+
+            AK11 WMKK VOMM 3h 30m A320 / A20N AK10 VOMM WMKK 3h 50m A320 / A20N
+            AK15 WMKK VILK 4h 30m A320 / A20N AK14 VILK WMKK 4h 30m A320 / A20N
+            AK19 WMKK VIJP 4h 50m A320 / A20N AK18 VIJP WMKK 5h 20m A320 / A20N
+            AK31 WMKK VEBS 3h 40m A320 / A20N AK30 VEBS WMKK 3h 50m A320 / A20N
+            AK33 WMKK VOCL 4h A320 / A20N AK32 VOCL WMKK 4h 30m A320 / A20N
+            AK53 WMKK VOBL 3h 40m A320 / A20N AK52 VOBL WMKK 4h 10m A320 / A20N
+            AK61 WMKK VEGT 4h A320 / A20N AK60 VEGT WMKK 4h A320 / A20N
+            AK63 WMKK VECC 3h 50m A320 AK62 VECC WMKK 3h 50m A320
+            AK67 WMKK VOHS 4h A320 / A20N AK66 VOHS WMKK 4h 10m A320 / A20N
+            AK72 WMKK VRMM 4h A320 / A20N AK73 VRMM WMKK 4h 30m A320 / A20N
+            D7182 WMKK VIDP 4h 50m A333 / A339 D7183 VIDP WMKK 5h 20m A333 / A339
+            D7212 WMKK YMML 7h A333 / A339 D7213 YMML WMKK 8h 30m A333 / A339
+            D7220 WMKK YSSY 7h 40m A333 / A339 D7221 YSSY WMKK 8h 20m A333 / A339
+            FD182 VTBD VNKT 3h A320 / A20N FD183 VNKT VTBD 3h A320 / A20N
+            FD4101 VTCC VTBS 1h A320 FD4100 VTBS VTCC 1h A320
+
+            CI12 RCTP KJFK 15:30 B77W CI11 KJFK RCTP 17:20 B77W
+            CI61 RCTP EDDF 15:40 A359 CI62 EDDF RCTP 12:30 A359
+            CI63 RCTP LOWW 14:30 A359 CI64 LOWW RCTP 11:30 A359
+            CI81 RCTP EGLL 16:30 A359 CI82 EGLL RCTP 13:00 A359
+            CI51 RCTP YSSY 10:00 A359 CI52 YSSY RCTP 09:10 A359
+            CI4 RCTP KSFO 11:30 B747, B77W, A359 CI3 KSFO RCTP 14:05 B747, B777W, A359
+            CI130 RCTP RJCC 03:30 B77W CI131 RJCC RCTP 04:40 B77W
+            CI150 RCTP RJGG 02:50 A321N, A333 CI151 RJGG RCTP 03:25 A321N, A333
+            CI183 RCKH RKSS 02:50 B738 CI184 RJGG RKSS 02:50 B738
+            CI551 RCTP ZUTF 03:40 A333 CI552 ZUTF RCTP 03:50 A333
+            CI781 RCTP VVTS 03:30 A333, A359 CI784 VVTS RCTP 03:20 A33, A359
+            CI761 RCTP WIII 05:10 A321N, A359 CI762 WIII RCTP 05:20 A321N, A350
+            CI701 RCTP RPLL 02:10 A333, B77W CI702 RPLL RCTP 01:52 A333, B77W
+
+            JX 6 RCTP KLAX 10:30 A359 JX 5 KLAX RCTP 13:40 A359
+            JX 12 RCTP KSFO 09:50 A359 JX 11 KSFO RCTP 13:00 A359
+            JX32 RCTP KSEA 09:50 A359 JX 31 KSEA RCTP 12:10 A359
+            JX 721 RCTP WMKP 04:15 A321N JX 722 WMKP RCTP 04:20 A321N
+            JX 761 RCTP WIII 05:00 A321N JX 762 WIII RCTP 04:50 A321N
+            JX 711 RCTP VVTS 03:00 A339, A359 JX 712 VVTS RCTP 02:50 A339, A359
+            JX 476 RCTP VTBS 03:00 A339, A359 JX 477 VTBS RCTP 03:00 A339, A359
+            JX 804 RCTP RJAA 02:20 A321, A339 JX 805 RJAA RCTP 03:50 A321, A339
+            JX 850 RCTP RJCC 03:00 A339 JX 851 RJCC RCTP 03:00 A339
+            JX 233 RCTP VHHH 01:30 A321N JX 234 VHHH RCTP 01:20 A321N
+
+            FR 3737 EICK EGBB 01:10 B738, B38M FR 3738 EGBB EICK 01:10 B738, B38M
+            FR 2088 EICK EGCC 01:15 B738, B38M FR 2089 EGCC EICK 01:15 B738, B38M
+            FR 6889 LATI LOWW 01:40 A320 FR 6890 LOWW LATI 01:40 A320
+            RK 8295 LATI EGPH 03:45 B38M RK 1274 EGPH LATI 04:45 B38M
+            FR 214 LOWW LIMC 01:06 A320, B738, B38M FR 215 LIMC LOWW 01:25 A320, B738, B38M
+            FR 2983 EBBR LIRF 01:35 B738, B38M FR 2984 LIRF EBBR 01:25 B738, B38M
+            FR 2947 EBBR LEMD 01:45 B738, B38M FR 2948 LEMD EBBR 02:10 B738, B38M
+            FR 5037 LBSF LICC 01:50 B738, B38M FR 5036 LICC LBSF 01:40 B738, B38M
+            FR 3529 LKPR LIME 01:10 B738, B38M FR 3528 LIME LKPR 01:20 B738, B38M
+            FR 5146 EKCH LPFR 04:15 B738, B38M FR 5147 LFPR EKCH 03:42 B738, B38M
+            FR406 EKCH LIRF 02:35 B738, B38M FR407 LIRF EKCH 02:50 B738, B38M
+            FR 9856 EFHK LOWW 02:30 A320, B738, B38M FR 9857 LOWW EFHK 02:15 A320, B738, B38M
+            FR932 EDDK LIRF 02:35 B738, B38M FR 933 LIRF EDDK 02:10 B738, B38M
+            FR 3723 LFOB EGCC 01:20 B738, B38M FR 3724 EGCC LFOB 01:20 B738, B38M
+            FR 3294 EVRA LEMG 04:15 B738, B38M FR 3293 LEMG EVRA 04:25 B738, B38M
+
+            GF 3 OBBI EGLL 06:30 B787-9 GF 2 EGLL OBBI 06:00 B787-9
+            GF 18 OBBI LFPG 07:40 B787-9 GF 19 LFPG OBBI 07:40 B787-9
+            GF 56 OBBI VABB 03:30 A321 GF 57 VABB OBBI 03:30 A321
+            GF 122 OBBI ZSPD 07:35 B787-9 GF 123 ZSPD OBBI 10:20 B787-9
+            GF 70 OBBI HECA 03:00 A321 GF 71 HECA OBBI 02:30 A321
+
+            TK29 LTFM KEWR 11:15 A330, B789 TK30 KEWR LTFM 09:30 A330, B789
+            TK38A LTFM FAOR 09:05 A330 TK42 FAOR LTFM 09:45 A330
+            TK44 LTFM FACT 10:15 A359, A330 TK45 FACT LTFM 11:00 A359, A330
+            TK671 LTFM FZAA 07:05 A330 TK672 FZAA LTFM 08:15 A330
+            TK1789 LTFM ESSA 03:30 A321, B738 TK1790 ESSA LTFM 03:45 A321, B738
+            TK1907 LTFM LSZH 02:30 A330, A321, B738 TK1908 LSZH LTFM 03:00 A330, A321, B738
+            TK2842 LTFM LTCM 01:00 B738, A319, A320, B737-700 TK2843 LTCM LTFM 01:40 B738, A319, A320, B737-700
+            TK1963 LTFM EGKK 04:25 A321 TK1964 EGKK LTFM 04:00 A321
+            TK2848 LTFM LTCB 01:20 A320, B738, A321 TK2849 LTCB LTFM 02:00 A320, B738, A321
+            TK614 LTFM UAAA 05:00 A330, B737-800, B789, A359 TK353 UAAA LTFM 06:40 A330, B737-800, B789, A359
+            TK613 LTFM HJJJ 05:37 B737-900 TK614 HJJJ LTFM 05:45 B737-900
+            TK676 LTFM HAAB 05:30 A321, A330 TK677 HAAB LTFM 05:00 A321, A330
+            TK708 LTFM OPKC 04:50 A330 TK709 OPKC LTFM 05:15 A330
+
+            SN357 EBBR FZAA 07:30 A333 SN358 FZAA EBBR 07:40 A333
+            SN501 EBBR KJFK 07:15 A333, B789 SN502 KJFK EBBR 06:45 A333, B789
+            SN465 EBBR HRYR 07:55 A333 SN466 HRYR EBBR 08:40 A333
+            SN229 EBBR DIAP 06:40 A333 SN307 DIAP EBBR 06:30 A333
+            SN2093 EBBR EGLL 00:50 A319, A320, A20N SN2096 EGLL EBBR 01:30 A319, A320, A20N
+            SN7005 EBBR EDDF 00:45 A319, A320, A20N SN7006 EDDF EBBR 00:50 A319, A320, A20N
+            SN3631 EBBR LFPG 00:40 A320, A20N SN3632 LFPG EBBR 00:40 A320, A20N
+            SN3721 EBBR LEMD 02:00 A319, A320, A20N, BCS3 SN3732 LEMD EBBR 02:15 A319, A320, A20N, BCS3
+            SN3175 EBBR LIRF 01:45 A319, A320, A20N, BCS3 SN3176 LIRF EBBR 02:15 A319, A320, A20N, BCS3
+            SN3815 EBBR LPPT 02:30 A319, A320, A20N SN3816 LPPT EBBR 02:40 A319, A320, A20N
+            SN2711 EBBR LSGG 01:00 A319, A320, A20N SN3712 LSGG EBBR 01:00 A319, A320, A20N
+            SN481 EBBR HKJK 08:15 A333 SN482 HKJK EBBR 09:00 A333
+            SN3289 EBBR LLBG 04:10 A320, A20N SN3290 LLBG EBBR 04:50 A320, A20N
+            SN9901 EBBR OMAA 05:00 A333 SN9902 OMAA EBBR 01:00 A333
+
+            6E 0171 VOCL VOHS 01:45 A320 6E 875 VOHS VOCL 02:00 A320
+            6E 6196 VOMM VOHS 02:25 A320 6E 6174 VOHS VOMM 02:30 A320
+            6E 0283 VAAH VOBL 02:10 A320 6E 6545 VOBL VAAH 02:20 A320
+            6E 0264 VECC VOCL 02:40 A321 6E 6932 VOCL VECC 02:50 A321
+            6E 2211 VIDP VOMM 02:45 A320 6E 2166 VOMM VIDP 02:50 A320
+            6E 6196 VOMM VAAH 02:25 A320 6E 6539 VAAH VOMM 02:30 A320
+            6E 0144 VOBL VOCL 01:10 A320 6E 153 VOCL VOBL 01:15 A320
+            6E 6728 VAAH VOHS 02:00 A320 6E 6099 VOHS VAAH 02:00 A320
+            6E 6517 VIDP VECC 02:20 A321 6E 2415 VECC VIDP 02:30 A321
+            6E 0923 VOMM VECC 02:50 A321 6E 723 VECC VOMM 02:55 A321
+            6E 1463 VIDP OMDB 03:30 A321 6E 1462 OMDB VIDP 03:40 A321
+            6E 1471 VOMM OMDB 04:00 A321 6E 1472 OMDB VOMM 04:00 A321
+            6E1411 VIDP OTBD 04:05 A320 6E 1412 OTBD VIDP 04:10 A320
+            6E 1485 VOBL OMDB 04:35 A321 6E 1486 OMDB VOBL 04:30 A321
+            6E 1835 VIDP OMAA 02:30 A320 6E 1836 OMAA VIDP 02:45 A321
+            6E 1203 VOBL HESH 07:00 A321 6E 1204 HESH VOBL 07:00 A321
+            6E 154 VABB LFPG 09:10 B38M 6E 853 LFPG VABB 09:15 B38M
+            6E 675 VABB EBBR 09:15 A321 6E 676 EBBR VABB 09:30 A321
+            6E 950 VOHS UUEE 07:15 A321 6E 6029 UUEE VOHS 07:20 A321
+            6E 685 VABB RKSI 07:00 A321 6E 395 RKSI VABB 07:00 A321
+            6E 1475 VOCL OMDB 04:30 A320 6E 1476Q OMDB VOCL 04:45 A320
+            6E 1043 VOBL WMKL 03:45 A320 6E 1044 WMKL VOBL 03:45 A320
+            6E 1051 VABB VTBS 04:50 A320 6E 1052 VTBS VABB 04:50 A320
+            6E 1053 VIDP VTBS 04:25 A320 6E 1054 VTBS VIDP 04:25 A320
+            6E 1091 VOBL WSSS 04:50 A321 6E 1092 WSSS VOBL 04:50 A321
+            6E 1221 OEDF VOTV 06:00 A321 6E 1222 VOTV OEDF 06:00 A321
+            6E 133 VAPO VOBL 02:00 A321 6E 134 VOBL VAPO 02:00 A321
+            6E 1707 VIDP VHHH 05:30 A321 6E 1708 VHHH VIDP 05:30 A321
+            6E 1819 VOTV OMDB 04:50 A320 6E 1472 OMDB VOTV 04:50 A320
+            6E 181 VECC VYYY 02:50 A320 6E 8846 VYYY VECC 03:00 A320
+            6E 234 VOMM WADD 06:00 A321 6E 235 WADD VOMM 06:00 A321
+            6E 1992 OMDB VASU 02:55 A320 6E 1993 VASU OMDB 02:55 A320
+            6E 2463 VOMM RJTT 08:00 A321 6E 2287 RJTT VOMM 08:00 A321
+            6E 2978 VEIM VIDP 02:50 A320 6E 2979 VIDP VEIM 02:45 A320
+            6E 423 VABB VVTS 05:50 A320 6E 1642 VVTS VABB 05:55 A320
+            6E 1853 VABB HKJK 07:50 A320 6E 1854 HKJK VABB 07:55 A320
+            6E 1441 VEBS OMAA 04:30 A320 6E 1442 OMAA VEBS 04:45 A320
+
+            KQ202 HKJK VABB 05:45 B788 KQ205 VABB HKJK 05:46 B788
+            KQ784 HKJK FACT 05:10 B738 KQ785 FACT HKJK 05:10 B738
+            KQ760 HKJK FAOR 03:50 B738 KQ761 FAOR HKJK 03:50 B738
+            KQ2314 HKJK OMSJ 04:50 B738 KQ2305 OMSJ HKJK 04:50 B738
+            KQ250 HKJK FSIA 02:50 E190 KQ251 FSIA HKJK 02:50 E 190
+            KQ482 HKJK HTDA 01:04 E190 KQ483 HTDA HKJK 01:04 E190
+            KQ426 HKJK HTKJ 01:00 E190 KQ427 HTKJ HKJK 01:00 E190
+            KQ116 HKJK EHAM 08:50 B788 KQ117 EHAM HKJK 08:50 B788
+            KQ532 HKJK DNMM 04:50 B738 KQ532 DNMM HKJK 04:50 B738
+            KQ270 HKJK FIMP 04:00 B738/E190 KQ271 FIMP HKJK 04:00 B738/E190
+
+            SG87 VIDP VTBS 3:50 B38M SG88 VTBS VIDP 3:50 B38M
+            SG13 VABB OMDB 2:29 B38M SG14 OMDB VABB 2:29 B38M
+            SG83 VECC VTBS 2:20 B38M SG84 VTBS VECC 2:20 B38M
+            SG 3615 VOMM VOVI 1:30 B737-900 SG 3617 VOVI VOMM 1:30 B737-900
+            SG51 VAPO OMDB 2:49 B38M SG52 OMDB VAPO 2:49 B38M
+            SG53 VOCL OMDB 3:18 B38M SG54 OMDB VOCL 3:18 B38M
+            SG186 VAPO VEBN 1:44 B737-900 SG187 VEBN VAPO 1:44 B737-900
+            SG 3429 VOBL VORJ 1:25 B737-900 SG 3431 VORJ VOBL 1:25 B737-900
+            SG122 VILH VIDP 1:22 B38M SG123 VIDP VILH 1:22 B38M
+            SG 856 VOMM VEGT 3:00 B737-900 SG 858 VEGT VOMM 3:00 B737-900
+
+            EY1 OMAA EDDF 06:29 B78X, A380 EY2 EDDF OMAA 05:54 B78X, A380
+            EY5 OMAA EDDM 06:17 B789, B77W EY6 EDDM OMAA 05:43 B789, B77W
+            EY11 OMAA EGLL 07:27 B78X, A380 EY12 EGLL OMAA 06:42 B78X, A380
+            EY37 OMAA LFPG 07:01 B78X, A380, B77W EY38 LFPG OMAA 06:27 B78X, A380, B77W
+            EY65 OMAA UUDD 05:08 B789, A321 EY68 UUDD OMAA 04:38 B789, A321
+            EY73 OMAA LSZH 06:39 B789, A380 EY74 LSZH OMAA 05:55 B789, A380
+            G9526 OMSJ VNKT 03:30 A320 G9537 VNKT OMSJ 04:30 A320
+            EY131 OMAA KIAD 13:55 B789 EY130 KIAD OMAA 12:37 B789
+            EY151 OMAA KORD 14:22 B789, B77W, A350-1000 EY150 KORD OMAA 12:53 B789, B77W, A350-1000
+            EY1027 OMAA KMIA 12:00 B77F EY1028 KMIA OMAA 12:00 B77F
+            EY210 OMAA VIDP 03:04 B78X, A321, A350-1000 EY211 VIDP OMAA 03:45 B78X, A321, A350-1000
+
+            LA8194 SBGR KMIA 08:00 B789/B77W LA8195 KMIA SBGR 08:00 B789/B77W
+            LA8120 SBGR LIRF 11:00 B789/B77W LA8121 LIRF SBGR 11:00 B789/B77W
+            LA8070 SBGR EDDF 11:00 B77W LA8071 EDDF SBGR 11:00 B77W
+            LA8112 SBGR MMMX 08:30 B789 LA8113 MMMX SBGR 08:30 B789
+            LA8114 SBGR LEBL 10:00 B789/B77W LA8115 LEBL SBGR 10:00 B789/B77W
+            LA8136 SBGR SAEZ 03:00 A320/A321 LA8137 SAEZ SBGR 03:00 A320/A321
+            LA8058 SBGR FAOR 09:00 B789 LA8059 FAOR SBGR 10:00 B789
+            LA8180 SBGR KJFK 08:40 B789/B77W LA8181 KJFK SBGR 08:40 B789/B77W
+            LA8124 SBFZ SCEL 06:30 A320/A321 LA8125 SCEL SBFZ 06:30 A320/A321
+            LA3768 SBGR SBMQ 02:30 A320 LA3769 SBMQ SBGR 02:30 A320
+            LA3866 SBGR SBVT 01:20 A320/A321 LA3867 SBVT SBGR 01:20 A320/A321
+            LA8148 SBGR LPPT 09:00 B789/B77W LA8147 LPPT SBGR 09:00 B789/B77W
+            LA3294 SBGR SBSL 03:00 A320/A321 LA3295 SBSL SBGR 03:00 A320/A321
+            LA8126 SBGR KMCO 08:20 B789 LA8127 KMCO SBGR 08:20 B789
+            LA3655 SBGR SBRB 03:40 A319/A320/A321 LA3656 SBRB SBGR 03:40 A319/A320/A321
+
+            JBU977 KBOS TNCM 4:18 A321 JBU78 TNCM KBOS 4:3 A321
+            JBU355 KJFK KONT 6:10 A320 JBU354 KONT KJFK 5:10 A320
+            JBU359 KJFK KBUR 6:20 A320 JBU358 KBUR KJFK 5:15 A320
+            JBU617 KJFK KMSP 2:55 A320 JBU618 KMSP KJFK 2:32 A320
+            JBU105 KJFK KORD 2:54 E190 JBU906 KORD KJFK 2:17 E190
+            JBU2288 KJFK EHAM 6:05 A321 JBU2289 EHAM KJFK 8:00 A321
+            JBU2210 KTPA KPHL 2:39 A320 JBU2209 KPHL KTPA 2:25 A320
+            JBU1931 KBOS KIAH 3:45 A220-300 JBU1932 KIAH KBOS 3:15 A220-300
+            JBU2293 KJFK KMIA 3:12 A320 JBU2292 KMIA KJFK 2:51 A320
+            JBU2511 KJFK SKBO 5:50 A320 JBU2512 SKBO KJFK 5:53 A320
+            JBU41 KFLL SKRG 3:22 A320 JBU40 SKRG KFLL 3:29 A320
+            JBU15 KJFK KSFO 6:33 A321 JBU16 KSFO KJFK 5:27 A321
+            JBU23 KJFK KLAX 6:11 A321 JBU24 KLAX KJFK 5:18 A321
+            JBU89 KJFK KSAN 6:05 A321 JBU90 KSAN KJFK 5:06 A321
+            JBU97 KJFK KDEN 4:35 A321 JBU98 KDEN KJFK 3:36 A321
+            JBU135 KJFK KPHX 5:5 A321 JBU136 KPHX KJFK 4:3 A321
+            JBU411 KJFK KLAS 6:04 A321 JBU448 KLAS KJFK 4:51 A321
+            JBU709 KJFK KDFW 3:36 A320 JBU610 KDFW KJFK 3:25 A320
+            JBU519 KJFK KATL 2:31 E190 JBU520 KATL KJFK 2:09 A320
+            JBU63 KJFK KSEA 6:22 A321 JBU264 KSEA KJFK 5:06 A321
+            JBU83 KJFK KMCO 3:01 E190 JBU284 KMCO KJFK 3:01 E190
+        `;
+
+        function parseRoutes(data) {
+            const lines = data.trim().split('\n').filter(line => line.trim() !== '');
+            const routes = [];
+            const combinedLines = [];
+
+            // Combine multi-line entries that are not one-way routes
+            let tempLine = '';
+            lines.forEach(line => {
+                if (line.trim().startsWith('MH') || line.trim().startsWith('KE') || line.trim().startsWith('6E') || line.trim().startsWith('JBU')) {
+                    if (tempLine) {
+                        combinedLines.push(tempLine);
+                    }
+                    tempLine = line;
+                } else if (tempLine) {
+                    tempLine += ' ' + line.trim();
+                } else {
+                    combinedLines.push(line);
+                }
+            });
+            if (tempLine) {
+                combinedLines.push(tempLine);
+            }
+
+            combinedLines.forEach(line => {
+                const parts = line.split(/\s+/).filter(part => part.trim() !== '' && part !== '-');
+                const oneWay = {};
+                let offset = 0;
+
+                // Handle multi-word aircraft types
+                function getAircraft(startIndex) {
+                    let aircraft = '';
+                    let i = startIndex;
+                    while (i < parts.length && !(/^[A-Z]{2,4}[0-9A-Z]{1,4}/.test(parts[i]) || parts[i].startsWith('via'))) {
+                        aircraft += (aircraft ? ' ' : '') + parts[i];
+                        i++;
+                    }
+                    return { aircraft: aircraft.trim(), nextIndex: i };
+                }
+
+                // Parse one-way leg
+                if (parts.length >= 5) {
+                    oneWay.flightNumber = parts[0];
+                    oneWay.departure = parts[1];
+                    oneWay.arrival = parts[2];
+                    oneWay.flightTime = parts[3];
+                    const aircraftInfo = getAircraft(4);
+                    oneWay.aircraft = aircraftInfo.aircraft;
+                    offset = aircraftInfo.nextIndex;
+                    routes.push(oneWay);
+                }
+
+                // Parse return leg
+                if (offset > 0 && offset + 3 < parts.length) {
+                    const returnWay = {};
+                    returnWay.flightNumber = parts[offset];
+                    returnWay.departure = parts[offset + 1];
+                    returnWay.arrival = parts[offset + 2];
+                    returnWay.flightTime = parts[offset + 3];
+                    const returnAircraftInfo = getAircraft(offset + 4);
+                    returnWay.aircraft = returnAircraftInfo.aircraft;
+                    routes.push(returnWay);
+                }
+            });
+            return routes;
+        }
+
+        const flightData = parseRoutes(allRoutesData);
+
+        document.getElementById('searchButton').addEventListener('click', function() {
+            performSearch();
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+
+            if (!query) {
+                resultsContainer.innerHTML = '<p style="text-align: center; color: #6b7280;">Please enter a search query to find flight routes.</p>';
+                return;
+            }
+
+            const filteredRoutes = flightData.filter(route =>
+                (route.flightNumber && route.flightNumber.toLowerCase().includes(query)) ||
+                (route.departure && route.departure.toLowerCase().includes(query)) ||
+                (route.arrival && route.arrival.toLowerCase().includes(query)) ||
+                (route.aircraft && route.aircraft.toLowerCase().includes(query))
+            );
+
+            if (filteredRoutes.length > 0) {
+                const table = document.createElement('table');
+                table.classList.add('flight-table');
+                table.innerHTML = `
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2 text-left text-gray-700">Flight Number</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Departure</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Arrival</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Flight Time</th>
+                            <th class="px-4 py-2 text-left text-gray-700">Aircraft</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                const tbody = table.querySelector('tbody');
+
+                filteredRoutes.forEach(route => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td data-label="Flight Number">${route.flightNumber || 'N/A'}</td>
+                        <td data-label="Departure">${route.departure || 'N/A'}</td>
+                        <td data-label="Arrival">${route.arrival || 'N/A'}</td>
+                        <td data-label="Flight Time">${route.flightTime || 'N/A'}</td>
+                        <td data-label="Aircraft">${route.aircraft || 'N/A'}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                resultsContainer.appendChild(table);
+            } else {
+                resultsContainer.innerHTML = '<p class="no-results">No flight routes found for your search.</p>';
+            }
         }
     </script>
 </body>
