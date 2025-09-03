@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akasa Air Virtual</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Prompt', sans-serif;
             background-color: #f3f4f6;
             color: #1f2937;
         }
 
         .header-bg {
-            background-color: #5d023b;
-        }
-
-        .dropdown-menu {
-            display: none;
-        }
-
-        .nav-link:hover .dropdown-menu {
-            display: block;
+            background-color: #ea580c; /* A deep orange */
         }
         
         /* Custom scrollbar for gallery */
@@ -32,7 +24,7 @@
         }
 
         .image-gallery::-webkit-scrollbar-thumb {
-            background-color: #5d023b;
+            background-color: #ea580c;
             border-radius: 4px;
         }
 
@@ -68,34 +60,34 @@
         <header class="header-bg text-white shadow-lg sticky top-0 z-50">
             <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2" onclick="showPage('home')">
+                <a href="#" class="flex items-center space-x-2" onclick="showPage(event, 'home')">
                     <img src="https://www.akasaair.com/assets/img/logo.svg" alt="Akasa Air Logo" class="h-8">
                     <span class="text-xl font-bold tracking-wide hidden sm:block">Akasa Air Virtual</span>
                 </a>
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#" class="nav-link relative group py-2" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link relative group py-2" onclick="showPage(event, 'home')">Home</a>
                     
-                    <div class="nav-link group relative py-2 cursor-pointer">
+                    <div class="nav-link group relative py-2 cursor-pointer" data-dropdown-toggle="about-us">
                         <span>About Us</span>
-                        <div class="dropdown-menu absolute left-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg z-50 min-w-[150px]">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded-t-md" onclick="showPage('about')">About Us</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage('staff')">Staff</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage('ranks')">Ranks</a>
+                        <div id="about-us-menu" class="absolute left-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg z-50 min-w-[150px] hidden">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded-t-md" onclick="showPage(event, 'about')">About Us</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage(event, 'staff')">Staff</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage(event, 'ranks')">Ranks</a>
                         </div>
                     </div>
                     
-                    <div class="nav-link group relative py-2 cursor-pointer">
+                    <div class="nav-link group relative py-2 cursor-pointer" data-dropdown-toggle="operations">
                         <span>Operations</span>
-                        <div class="dropdown-menu absolute left-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg z-50 min-w-[150px]">
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded-t-md" onclick="showPage('fleet')">Our Fleet</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage('hubs')">Main HUBs</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage('routes')">Routes</a>
+                        <div id="operations-menu" class="absolute left-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg z-50 min-w-[150px] hidden">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700 rounded-t-md" onclick="showPage(event, 'fleet')">Our Fleet</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage(event, 'hubs')">Main HUBs</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-700" onclick="showPage(event, 'routes')">Routes</a>
                         </div>
                     </div>
                     
-                    <a href="#" class="nav-link py-2" onclick="showPage('apply')">Apply Now</a>
+                    <a href="#" onclick="showPage(event, 'apply')" class="nav-link py-2">Apply Now</a>
                     
                     <a href="#" class="py-2">
                         <i class="fas fa-search"></i>
@@ -110,24 +102,24 @@
 
             <!-- Mobile Menu (Hidden by default) -->
             <div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white">
-                <a href="#" class="block px-4 py-3 hover:bg-gray-700" onclick="showPage('home'); closeMobileMenu();">Home</a>
-                <div class="group relative">
-                    <button class="w-full text-left px-4 py-3 hover:bg-gray-700 flex justify-between items-center" onclick="toggleDropdown(this)">About Us <i class="fas fa-chevron-down text-xs ml-2"></i></button>
-                    <div class="dropdown-menu ml-4">
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('about'); closeMobileMenu();">About Us</a>
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('staff'); closeMobileMenu();">Staff</a>
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('ranks'); closeMobileMenu();">Ranks</a>
+                <a href="#" class="block px-4 py-3 hover:bg-gray-700" onclick="showPage(event, 'home'); closeMobileMenu();">Home</a>
+                <div class="group relative" data-dropdown-toggle="mobile-about-us">
+                    <button class="w-full text-left px-4 py-3 hover:bg-gray-700 flex justify-between items-center">About Us <i class="fas fa-chevron-down text-xs ml-2"></i></button>
+                    <div id="mobile-about-us-menu" class="ml-4 hidden">
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'about'); closeMobileMenu();">About Us</a>
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'staff'); closeMobileMenu();">Staff</a>
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'ranks'); closeMobileMenu();">Ranks</a>
                     </div>
                 </div>
-                <div class="group relative">
-                    <button class="w-full text-left px-4 py-3 hover:bg-gray-700 flex justify-between items-center" onclick="toggleDropdown(this)">Operations <i class="fas fa-chevron-down text-xs ml-2"></i></button>
-                    <div class="dropdown-menu ml-4">
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('fleet'); closeMobileMenu();">Our Fleet</a>
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('hubs'); closeMobileMenu();">Main HUBs</a>
-                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage('routes'); closeMobileMenu();">Routes</a>
+                <div class="group relative" data-dropdown-toggle="mobile-operations">
+                    <button class="w-full text-left px-4 py-3 hover:bg-gray-700 flex justify-between items-center">Operations <i class="fas fa-chevron-down text-xs ml-2"></i></button>
+                    <div id="mobile-operations-menu" class="ml-4 hidden">
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'fleet'); closeMobileMenu();">Our Fleet</a>
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'hubs'); closeMobileMenu();">Main HUBs</a>
+                        <a href="#" class="block px-4 py-3 hover:bg-gray-600" onclick="showPage(event, 'routes'); closeMobileMenu();">Routes</a>
                     </div>
                 </div>
-                <a href="#" class="block px-4 py-3 hover:bg-gray-700" onclick="showPage('apply'); closeMobileMenu();">Apply Now</a>
+                <a href="#" onclick="showPage(event, 'apply')" class="block px-4 py-3 hover:bg-gray-700" onclick="closeMobileMenu();">Apply Now</a>
             </div>
         </header>
 
@@ -142,8 +134,8 @@
             <!-- Welcome & Goals Section -->
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-2">Welcome to the Virtual Skies of Akasa Air</h2>
-                    <h3 class="text-2xl font-semibold text-center text-gray-800 mb-8">Soar Higher, <span class="text-purple-600">Together!</span></h3>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-2">Welcome to the Virtual Skies of Akasa Air</h2>
+                    <h3 class="text-2xl font-semibold text-center text-gray-800 mb-8">Soar Higher, <span class="text-orange-600">Together!</span></h3>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-6">
                         At Akasa Air Virtual, we're redefining the virtual skies with innovation, inclusivity, and excellence. As a proud member of the Infinite Flight community, we bring the joy of aviation to life through immersive experiences and realistic operations. Whether you're a seasoned virtual aviator or just beginning your journey, Akasa Air Virtual offers:
                     </p>
@@ -161,7 +153,7 @@
             <!-- Goals Section -->
             <section class="bg-gray-200 py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">Our Goals</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Our Goals</h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-6">
                         At Akasa Air Virtual, our mission is to provide a realistic, engaging, and professional platform for aviation enthusiasts to explore their passion for flying. We aim to emulate the operations of Akasa Air Virtual with exceptional attention to detail, offering pilots an opportunity to experience the thrill and responsibilities of being part of a Virtual Airline.
                     </p>
@@ -174,7 +166,7 @@
             <!-- CEO Message Section -->
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">A Message from our CEO</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">A Message from our CEO</h2>
                     <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
                         <p class="text-gray-600 text-lg leading-relaxed mb-4">
                             Dear Pilots, On behalf of the entire team at Akasa Air Virtual, I would like to extend a warm welcome to you as a valued member of our virtual airline. Whether you're a seasoned pilot or just starting your journey in Infinite Flight, we are excited to have you on board as part of the Akasa Air family.
@@ -199,7 +191,7 @@
             <!-- Image Gallery Section -->
             <section class="bg-gray-200 py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">Image Gallery</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Image Gallery</h2>
                     <div class="image-gallery flex overflow-x-auto gap-4 p-4 rounded-lg shadow-inner">
                         <div class="flex-shrink-0 w-80 h-48 bg-gray-400 rounded-lg shadow-md flex items-center justify-center text-gray-700">Image 1</div>
                         <div class="flex-shrink-0 w-80 h-48 bg-gray-400 rounded-lg shadow-md flex items-center justify-center text-gray-700">Image 2</div>
@@ -219,7 +211,7 @@
             </div>
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-4">Meet Our Team</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-4">Meet Our Team</h2>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">
                         At Akasa Air Virtual, our dedicated team of staff members works tirelessly to ensure smooth operations, engaging events, and an unmatched virtual aviation experience for our pilots. From scheduling exciting routes to organizing community events, each member of our team plays a vital role in keeping our virtual airline running like clockwork.
                     </p>
@@ -227,37 +219,37 @@
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Rajesh Kumar</h4>
-                            <p class="text-purple-600 font-medium">Founder & CEO</p>
+                            <p class="text-orange-600 font-medium">Founder & CEO</p>
                             <p class="text-gray-600 mt-2">Aviation enthusiast with over 10 years of virtual airline experience.</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Priya Sharma</h4>
-                            <p class="text-purple-600 font-medium">Chief Operations Officer</p>
+                            <p class="text-orange-600 font-medium">Chief Operations Officer</p>
                             <p class="text-gray-600 mt-2">Responsible for flight operations and scheduling.</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Arjun Patel</h4>
-                            <p class="text-purple-600 font-medium">Training Manager</p>
+                            <p class="text-orange-600 font-medium">Training Manager</p>
                             <p class="text-gray-600 mt-2">Develops training programs and checkrides for pilots.</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Sneha Desai</h4>
-                            <p class="text-purple-600 font-medium">Routes Manager</p>
+                            <p class="text-orange-600 font-medium">Routes Manager</p>
                             <p class="text-gray-600 mt-2">Designs and maintains our network of routes.</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Vikram Singh</h4>
-                            <p class="text-purple-600 font-medium">IT Manager</p>
+                            <p class="text-orange-600 font-medium">IT Manager</p>
                             <p class="text-gray-600 mt-2">Maintains our website and tracking systems.</p>
                         </div>
                         <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                             <div class="bg-gray-400 w-32 h-32 mx-auto rounded-full mb-4"></div>
                             <h4 class="text-xl font-semibold">Ananya Reddy</h4>
-                            <p class="text-purple-600 font-medium">Community Manager</p>
+                            <p class="text-orange-600 font-medium">Community Manager</p>
                             <p class="text-gray-600 mt-2">Engages with our community and organizes events.</p>
                         </div>
                     </div>
@@ -272,7 +264,7 @@
             </div>
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-4">Our Rank Structure</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-4">Our Rank Structure</h2>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-12">
                         At Akasa Air Virtual, we believe in rewarding dedication, skill, and experience. Our rank structure is designed to motivate pilots as they progress through their virtual flying journey.
                     </p>
@@ -322,7 +314,7 @@
             </div>
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-4">Operational Fleet</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-4">Operational Fleet</h2>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-8">
                         Modern. Efficient. Reliable.
                     </p>
@@ -343,7 +335,7 @@
                         </ul>
                     </div>
                     
-                    <h3 class="text-2xl font-bold text-purple-800 mb-4 text-center">Expanding Horizons</h3>
+                    <h3 class="text-2xl font-bold text-orange-800 mb-4 text-center">Expanding Horizons</h3>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-8">
                         As Akasa Air Virtual grows, we aim to expand our fleet with additional aircraft to explore new routes and opportunities. Stay tuned for updates as we continue to soar to greater heights!
                     </p>
@@ -359,7 +351,7 @@
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto space-y-16">
                     <div>
-                        <h2 class="text-3xl font-bold text-purple-800 mb-4 text-center">Kempegowda International Airport <br>(BLR)/(VOBL)</h2>
+                        <h2 class="text-3xl font-bold text-orange-800 mb-4 text-center">Kempegowda International Airport <br>(BLR)/(VOBL)</h2>
                         <div class="md:flex items-center space-y-4 md:space-y-0 md:space-x-8">
                             <div class="md:w-1/2">
                                 <img src="https://placehold.co/600x400/cccccc/333333?text=BLR+Airport" alt="Kempegowda International Airport" class="w-full h-auto rounded-lg shadow-lg">
@@ -373,7 +365,7 @@
                     </div>
 
                     <div>
-                        <h2 class="text-3xl font-bold text-purple-800 mb-4 text-center">Chhatrapati Shivaji Maharaj International Airport <br>(BOM)/(VABB)</h2>
+                        <h2 class="text-3xl font-bold text-orange-800 mb-4 text-center">Chhatrapati Shivaji Maharaj International Airport <br>(BOM)/(VABB)</h2>
                         <div class="md:flex items-center space-y-4 md:space-y-0 md:space-x-8 flex-row-reverse">
                             <div class="md:w-1/2">
                                 <img src="https://placehold.co/600x400/cccccc/333333?text=BOM+Airport" alt="Chhatrapati Shivaji Maharaj International Airport" class="w-full h-auto rounded-lg shadow-lg">
@@ -397,7 +389,7 @@
             </div>
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-7xl mx-auto">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">Domestic Routes</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Domestic Routes</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                         <div class="text-center">
                             <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Bengaluru" alt="Bengaluru" class="w-full h-auto rounded-lg shadow-lg mb-4">
@@ -416,7 +408,7 @@
                         </div>
                     </div>
 
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">International Routes</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">International Routes</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                         <div class="text-center">
                             <img src="https://placehold.co/400x300/e2e8f0/64748b?text=Abu+Dhabi" alt="Abu Dhabi" class="w-full h-auto rounded-lg shadow-lg mb-4">
@@ -430,12 +422,12 @@
                         </div>
                     </div>
 
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">Route Map</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Route Map</h2>
                     <div class="flex justify-center mb-8">
                         <img src="https://placehold.co/1000x600/e2e8f0/64748b?text=Route+Map" alt="Route Map" class="w-full h-auto rounded-lg shadow-lg">
                     </div>
 
-                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-purple-800 mb-8">Routes Database</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-center text-orange-800 mb-8">Routes Database</h2>
                     <div class="overflow-x-auto rounded-lg shadow-lg">
                         <table class="min-w-full bg-white text-sm">
                             <thead>
@@ -480,9 +472,9 @@
                             Enter a departure and arrival airport ICAO code to get more details about a potential flight route.
                         </p>
                         <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                            <input type="text" id="departure-input" placeholder="Departure ICAO (e.g., VOBL)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                            <input type="text" id="arrival-input" placeholder="Arrival ICAO (e.g., VABB)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                            <button id="get-flight-btn" class="w-full sm:w-auto px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-lg hover:bg-purple-700 transition duration-300 ease-in-out">
+                            <input type="text" id="departure-input" placeholder="Departure ICAO (e.g., VOBL)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <input type="text" id="arrival-input" placeholder="Arrival ICAO (e.g., VABB)" class="w-full sm:w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <button id="get-flight-btn" class="w-full sm:w-auto px-6 py-3 bg-orange-600 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out">
                                 ✨ Get Flight Info
                             </button>
                         </div>
@@ -490,7 +482,7 @@
                             <!-- Flight info will be displayed here -->
                             <p id="flight-info-text" class="text-gray-800 whitespace-pre-wrap"></p>
                             <div id="loading-spinner" class="hidden text-center">
-                                <i class="fas fa-spinner fa-spin text-purple-600 text-3xl"></i>
+                                <i class="fas fa-spinner fa-spin text-orange-600 text-3xl"></i>
                                 <p class="text-gray-500 mt-2">Generating flight details...</p>
                             </div>
                         </div>
@@ -506,7 +498,7 @@
             </div>
             <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-5xl mx-auto">
-                    <h2 class="text-3xl font-bold text-purple-800 mb-8 text-center">Join Akasa Air Virtual</h2>
+                    <h2 class="text-3xl font-bold text-orange-800 mb-8 text-center">Join Akasa Air Virtual</h2>
                     <p class="text-gray-600 text-lg leading-relaxed text-center mb-6">
                         Welcome to Akasa Air Virtual! We're thrilled that you're interested in joining our growing family of aviation enthusiasts. At Akasa Air Virtual, we strive to provide a realistic, professional, and fun environment for pilots of all skill levels. Here's why you should join us:
                     </p>
@@ -544,6 +536,12 @@
                             </li>
                         </ol>
                     </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeN-cKmnrnuSMGaiJXCxESG4gVsOTc91XVL2EwXVF1HWBWlWw/viewform?usp=send_form" target="_blank" class="inline-block px-8 py-4 bg-orange-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out transform hover:scale-105">
+                            Click to Fill out the Application Form
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -564,9 +562,12 @@
                 <div class="col-span-1 text-center md:text-left">
                     <h4 class="font-semibold text-white mb-4">Akasa Air Virtual</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white" onclick="showPage('staff')">Staff</a></li>
-                        <li><a href="#" class="hover:text-white" onclick="showPage('fleet')">Fleet</a></li>
-                        <li><a href="#" class="hover:text-white" onclick="showPage('ranks')">Ranks</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'staff')">Staff</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'fleet')">Fleet</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'hubs')">Main HUBs</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'routes')">Routes</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'ranks')">Ranks</a></li>
+                        <li><a href="#" class="hover:text-white" onclick="showPage(event, 'apply')">Apply Now</a></li>
                     </ul>
                 </div>
 
@@ -574,8 +575,8 @@
                 <div class="col-span-1 text-center md:text-left">
                     <h4 class="font-semibold text-white mb-4">Infinite Flight Community</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white">IFC Account</a></li>
-                        <li><a href="#" class="hover:text-white">IFC Thread</a></li>
+                        <li><a href="https://community.infiniteflight.com/u/akasa_air_virtual/summary" target="_blank" class="hover:text-white">IFC Account</a></li>
+                        <li><a href="https://community.infiniteflight.com/t/akasa-air-virtual-its-your-sky-official-thread-2025-2026/986856?u=b777_boii" target="_blank" class="hover:text-white">IFC Thread</a></li>
                     </ul>
                 </div>
 
@@ -605,7 +606,10 @@
         const loadingSpinner = document.getElementById('loading-spinner');
         const messageBox = document.getElementById('message-box');
 
-        function showPage(pageId) {
+        function showPage(event, pageId) {
+            // Prevent the default link behavior (page reload)
+            event.preventDefault();
+
             pages.forEach(id => {
                 const page = document.getElementById(id);
                 if (page) {
@@ -617,7 +621,37 @@
 
         // Show the home page on initial load
         document.addEventListener('DOMContentLoaded', () => {
-            showPage('home');
+            showPage({ preventDefault: () => {} }, 'home');
+
+            // Initialize dropdown toggles
+            document.querySelectorAll('[data-dropdown-toggle]').forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    const dropdownId = toggle.dataset.dropdownToggle;
+                    const dropdownMenu = document.getElementById(dropdownId + "-menu");
+
+                    if (!dropdownMenu) return;
+
+                    // Close all other dropdowns
+                    document.querySelectorAll('[id$="-menu"]').forEach(menu => {
+                        if (menu !== dropdownMenu) {
+                            menu.classList.add('hidden');
+                        }
+                    });
+
+                    // Toggle the current one
+                    dropdownMenu.classList.toggle('hidden');
+                    e.stopPropagation(); // Prevent the click from bubbling up and closing the menu
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                document.querySelectorAll('[id$="-menu"]').forEach(menu => {
+                    if (!menu.classList.contains('hidden') && !e.target.closest('[data-dropdown-toggle]')) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            });
         });
 
         // Mobile menu toggle
@@ -631,11 +665,6 @@
             mobileMenu.classList.add('hidden');
             mobileMenuBtn.querySelector('i').classList.remove('fa-times');
             mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-        }
-
-        function toggleDropdown(button) {
-            const dropdown = button.nextElementSibling;
-            dropdown.classList.toggle('hidden');
         }
 
         // Gemini API integration for flight info
@@ -707,3 +736,4 @@
     </script>
 </body>
 </html>
+
